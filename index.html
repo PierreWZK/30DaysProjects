@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 jours, 30 projets</title>
+  <meta name="description" content="Défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0e11;
+      --surface: #16161b;
+      --surface-2: #1d1d24;
+      --line: #2a2a33;
+      --ink: #ededf0;
+      --muted: #8d8d99;
+      --radius: 16px;
+      --rainbow: linear-gradient(90deg, #ff6b6b, #ffb23d, #6bcb77, #4d96ff, #b06bff);
+      --font-title: 'Bricolage Grotesque', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-title);
+      line-height: 1.05;
+      margin: 0;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-inline: 24px;
+    }
+
+    /* ---------- Navigation ---------- */
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 24px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--rainbow);
+      color: var(--bg);
+      font-size: 0.8rem;
+    }
+
+    .nav-link {
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .nav-link:hover { border-color: var(--ink); }
+
+    /* ---------- Hero ---------- */
+
+    .hero { padding-block: 70px 50px; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 7.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      background: var(--rainbow);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      max-width: 40em;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 28px 0 0;
+    }
+
+    /* Calendrier de progression : une case par jour */
+    .progress { margin-top: 56px; }
+
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .progress-count {
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .progress-count small {
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .progress-stats {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(15, 1fr);
+      gap: 6px;
+    }
+
+    .day {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .day:hover {
+      transform: translateY(-2px);
+      border-color: var(--muted);
+    }
+
+    .day.is-done {
+      border: 0;
+      background: var(--rainbow);
+      background-size: 1500% 100%; /* chaque case prend sa teinte dans le dégradé */
+      color: var(--bg);
+    }
+
+    .day.is-progress {
+      border-color: #ffb23d;
+      color: #ffb23d;
+    }
+
+    /* ---------- Projets ---------- */
+
+    .projects { padding-block: 40px 90px; }
+
+    .projects-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .projects-head h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: 500 0.88rem var(--font-body);
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+    }
+
+    .filter:hover { color: var(--ink); }
+
+    .filter.is-active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--bg);
+    }
+
+    .filter-count { opacity: 0.6; font-size: 0.8em; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      text-decoration: none;
+      scroll-margin-top: 24px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    a.card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 24px 40px -24px var(--accent);
+    }
+
+    .card:target {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .preview {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: var(--surface-2);
+      overflow: hidden;
+    }
+
+    .preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    a.card:hover .preview img { transform: scale(1.04); }
+
+    /* Projets à venir : grand numéro du jour à la place de l'image */
+    .preview-empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+        repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.025) 14px 15px);
+    }
+
+    .preview-empty span {
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 5rem;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--line);
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 18px 18px 20px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .status {
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--line);
+    }
+
+    .status.is-done { color: #6bcb77; border-color: #6bcb7755; }
+    .status.is-progress { color: #ffb23d; border-color: #ffb23d55; }
+
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .card-title {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .card-desc {
+      margin: 10px 0 0;
+      font-size: 0.92rem;
+      color: #c4c4cc;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .tag::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .tag + .tag::before { display: none; }
+
+    .card-arrow {
+      flex: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--accent);
+    }
+
+    .card.is-todo h3 { color: #b9b9c2; }
+
+    .empty {
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* ---------- Pied de page ---------- */
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-block: 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--ink); }
+
+    @media (max-width: 640px) {
+      .hero { padding-block: 40px 30px; }
+      .calendar { grid-template-columns: repeat(10, 1fr); gap: 5px; }
+      .day { font-size: 0.68rem; border-radius: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav container">
+    <a href="./" class="logo"><span class="logo-mark">30</span>30 Days, 30 Projects</a>
+    <a href="https://github.com/PierreWZK/30DaysProjects" class="nav-link" target="_blank" rel="noopener">Code source ↗</a>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <p class="eyebrow">Le défi</p>
+      <h1>30 jours.<br><span>30 projets.</span></h1>
+      <p class="lead">
+        Un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.
+        Au programme : JavaScript, React, Next.js, Laravel, Symfony et quelques autres technos.
+        Le défi se termine par un portfolio en Next.js qui présente les 30 projets.
+      </p>
+
+      <div class="progress">
+        <div class="progress-head">
+          <span class="progress-count"><span id="done-count">0</span> <small>/ 30 projets livrés</small></span>
+          <span id="progress-stats" class="progress-stats"></span>
+        </div>
+        <nav id="calendar" class="calendar" aria-label="Progression jour par jour"></nav>
+      </div>
+    </section>
+
+    <section id="projets" class="projects container">
+      <div class="projects-head">
+        <h2>Les projets</h2>
+        <div id="filters" class="filters" role="group" aria-label="Filtrer par techno"></div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>30 Days, 30 Projects</span>
+    <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">github.com/PierreWZK/30DaysProjects</a>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script>
+    // Familles de technos pour les filtres, avec leur couleur
+    const CATEGORIES = {
+      'JavaScript': '#f7df1e',
+      'React': '#61dafb',
+      'Next.js': '#ededf0',
+      'Laravel': '#ff5a4f',
+      'Symfony': '#a78bfa',
+      'Autres': '#34d399',
+    };
+
+    // La famille d'un projet = sa première techno (Angular, Java… vont dans « Autres »)
+    const categoryOf = p => (CATEGORIES[p.stack[0]] ? p.stack[0] : 'Autres');
+
+    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours', todo: 'À venir' };
+    const pad = n => String(n).padStart(2, '0');
+    const isOpen = p => p.status !== 'todo'; // lien actif pour les projets commencés
+
+    // Échappe le texte avant de l'insérer dans le HTML
+    const esc = text => String(text).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+
+    let activeFilter = 'Tous';
+
+    // ---------- Progression ----------
+
+    function renderProgress() {
+      const done = PROJECTS.filter(p => p.status === 'done').length;
+      const stacks = new Set(PROJECTS.filter(isOpen).flatMap(p => p.stack));
+
+      document.getElementById('done-count').textContent = done;
+      document.getElementById('progress-stats').textContent =
+        `${stacks.size} techno${stacks.size > 1 ? 's' : ''} utilisée${stacks.size > 1 ? 's' : ''} · ${30 - done} à venir`;
+
+      document.getElementById('calendar').innerHTML = PROJECTS.map(p => `
+        <a class="day is-${p.status}" href="#jour-${pad(p.day)}"
+           title="Jour ${pad(p.day)} · ${esc(p.name || p.title)} (${STATUS_LABELS[p.status]})"
+           style="background-position: ${((p.day - 1) / 29) * 100}% 0">${p.day}</a>
+      `).join('');
+
+      // Un clic sur une case affiche tous les projets, pour que la carte soit visible
+      document.querySelectorAll('.day').forEach(el => el.addEventListener('click', () => {
+        if (activeFilter !== 'Tous') setFilter('Tous');
+      }));
+    }
+
+    // ---------- Filtres ----------
+
+    function renderFilters() {
+      const counts = { Tous: PROJECTS.length };
+      PROJECTS.forEach(p => {
+        const c = categoryOf(p);
+        counts[c] = (counts[c] || 0) + 1;
+      });
+
+      document.getElementById('filters').innerHTML = ['Tous', ...Object.keys(CATEGORIES)]
+        .filter(name => counts[name])
+        .map(name => `
+          <button class="filter${name === activeFilter ? ' is-active' : ''}" data-filter="${name}">
+            ${name} <span class="filter-count">${counts[name]}</span>
+          </button>
+        `).join('');
+    }
+
+    function setFilter(name) {
+      activeFilter = name;
+      renderFilters();
+      renderGrid();
+    }
+
+    document.getElementById('filters').addEventListener('click', e => {
+      const btn = e.target.closest('.filter');
+      if (btn) setFilter(btn.dataset.filter);
+    });
+
+    // ---------- Cartes ----------
+
+    function cardHtml(p) {
+      const accent = CATEGORIES[categoryOf(p)];
+      const tag = isOpen(p) ? 'a' : 'div';
+      const href = isOpen(p) ? ` href="./${p.folder}/"` : '';
+
+      const preview = p.image
+        ? `<img src="${p.image}" alt="Aperçu de ${esc(p.name || p.title)}" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'preview-empty', innerHTML: '<span>${pad(p.day)}</span>'}))">`
+        : `<div class="preview-empty"><span>${pad(p.day)}</span></div>`;
+
+      return `
+        <${tag} class="card is-${p.status}" id="jour-${pad(p.day)}"${href} style="--accent: ${accent}">
+          <div class="preview">${preview}</div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span>Jour ${pad(p.day)}</span>
+              <span class="status is-${p.status}">${STATUS_LABELS[p.status]}</span>
+            </div>
+            <h3>${esc(p.name || p.title)}</h3>
+            ${p.name ? `<p class="card-title">${esc(p.title)}</p>` : ''}
+            ${p.description ? `<p class="card-desc">${esc(p.description)}</p>` : ''}
+            <div class="card-footer">
+              <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+              ${isOpen(p) ? '<span class="card-arrow">Voir →</span>' : ''}
+            </div>
+          </div>
+        </${tag}>
+      `;
+    }
+
+    function renderGrid() {
+      const list = PROJECTS.filter(p => activeFilter === 'Tous' || categoryOf(p) === activeFilter);
+      document.getElementById('grid').innerHTML = list.length
+        ? list.map(cardHtml).join('')
+        : '<p class="empty">Aucun projet pour ce filtre.</p>';
+    }
+
+    renderProgress();
+    renderFilters();
+    renderGrid();
+  </script>
+</body>
+</html>
