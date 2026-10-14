@@ -1,0 +1,625 @@
+/* ==========================================================================
+   30 Days, 30 Projects · page d'accueil
+   ========================================================================== */
+
+:root {
+  --bg: #0e0e11;
+  --surface: #16161b;
+  --surface-2: #1d1d24;
+  --line: #2a2a33;
+  --ink: #ededf0;
+  --muted: #8d8d99;
+  --radius: 16px;
+  --rainbow: linear-gradient(90deg, #ff6b6b, #ffb23d, #6bcb77, #4d96ff, #b06bff);
+  /* Même dégradé, bouclé sur lui-même pour pouvoir l'animer sans saut */
+  --rainbow-loop: linear-gradient(90deg, #ff6b6b, #ffb23d, #6bcb77, #4d96ff, #b06bff, #ff6b6b);
+  --font-title: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: clip; /* les halos du fond ne créent pas de défilement horizontal */
+}
+
+h1, h2, h3 {
+  font-family: var(--font-title);
+  line-height: 1.05;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+/* ---------- Halos lumineux du fond ---------- */
+
+.glow {
+  position: absolute;
+  z-index: -1;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.22;
+  pointer-events: none;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+  top: -220px;
+  right: -120px;
+  background: #4d96ff;
+}
+
+.glow-2 {
+  top: 120px;
+  left: -260px;
+  background: #ff6b6b;
+  animation-delay: -11s;
+}
+
+@keyframes drift {
+  to {
+    transform: translate(80px, 60px) scale(1.15);
+  }
+}
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 24px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+
+/* L'anneau de 30 segments tourne doucement au survol */
+.logo-ring {
+  transform-origin: 50% 50%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.logo:hover .logo-ring {
+  transform: rotate(-90deg);
+}
+
+.logo-text small {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.nav-link {
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.nav-link:hover {
+  border-color: var(--ink);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding-block: 70px 50px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  min-height: 2.1em; /* deux lignes réservées : rien ne bouge pendant l'écriture */
+}
+
+.hero h1 .line {
+  display: block;
+}
+
+/* « 30 projets. » : dégradé arc-en-ciel qui défile */
+.hero h1 .rainbow {
+  background: var(--rainbow-loop);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-flow 6s linear infinite;
+}
+
+@keyframes rainbow-flow {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Curseur de la machine à écrire */
+.caret {
+  display: inline-block;
+  width: 0.07em;
+  height: 0.85em;
+  margin-left: 0.06em;
+  vertical-align: -0.04em;
+  background: var(--ink);
+  border-radius: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+
+.caret.is-typing {
+  animation: none; /* le curseur reste plein pendant la frappe */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.lead {
+  max-width: 40em;
+  color: var(--muted);
+  font-size: 1.15rem;
+  margin: 28px 0 0;
+}
+
+/* ---------- Calendrier de progression ---------- */
+
+.progress {
+  margin-top: 56px;
+}
+
+.progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.progress-count {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.progress-count small {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.progress-stats {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 6px;
+}
+
+.day {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s, border-color 0.15s;
+  /* Les cases apparaissent l'une après l'autre au chargement */
+  animation: pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.2) backwards;
+  animation-delay: calc(var(--i) * 25ms + 200ms);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
+
+.day:hover {
+  transform: translateY(-2px);
+  border-color: var(--muted);
+}
+
+.day.is-done {
+  border: 0;
+  background: var(--rainbow);
+  background-size: 1500% 100%; /* chaque case prend sa teinte dans le dégradé */
+  color: var(--bg);
+}
+
+.day.is-progress {
+  border-color: #ffb23d;
+  color: #ffb23d;
+}
+
+/* ---------- Projets ---------- */
+
+.projects {
+  padding-block: 40px 90px;
+}
+
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.projects-head h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: 500 0.88rem var(--font-body);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.filter:hover {
+  color: var(--ink);
+}
+
+.filter.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.filter-count {
+  opacity: 0.6;
+  font-size: 0.8em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  scroll-margin-top: 24px;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Halo qui suit la souris sur la carte (position fournie par le JS) */
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 13%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+a.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 24px 40px -24px var(--accent);
+}
+
+.card:target {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Apparition des cartes au défilement */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.2s, box-shadow 0.2s;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+a.card.reveal.is-visible:hover {
+  transform: translateY(-4px);
+  transition-delay: 0s;
+}
+
+.preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+a.card:hover .preview img {
+  transform: scale(1.04);
+}
+
+/* Projets à venir : grand numéro du jour à la place de l'image */
+.preview-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+    repeating-linear-gradient(135deg, transparent 0 14px, rgba(255, 255, 255, 0.025) 14px 15px);
+}
+
+.preview-empty span {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 5rem;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--line);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 18px 20px;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.status {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+}
+
+.status.is-done {
+  color: #6bcb77;
+  border-color: #6bcb7755;
+}
+
+.status.is-progress {
+  color: #ffb23d;
+  border-color: #ffb23d55;
+}
+
+.card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.card.is-todo h3 {
+  color: #b9b9c2;
+}
+
+.card-title {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.card-desc {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+  color: #c4c4cc;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Pastille de couleur de la famille de techno, sur le premier tag */
+.tag:first-child::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.card-arrow {
+  flex: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--accent);
+  transition: transform 0.2s;
+}
+
+a.card:hover .card-arrow {
+  transform: translateX(4px);
+}
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ---------- Pied de page ---------- */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-block: 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--ink);
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: 40px 30px;
+  }
+
+  .logo-text small {
+    display: none;
+  }
+
+  .calendar {
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+  }
+
+  .day {
+    font-size: 0.68rem;
+    border-radius: 6px;
+  }
+
+  .glow {
+    width: 360px;
+    height: 360px;
+  }
+}
+
+/* ---------- Animations réduites ---------- */
+
+/* Pour les personnes qui ont demandé moins d'animations à leur système */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .caret {
+    display: none;
+  }
+}

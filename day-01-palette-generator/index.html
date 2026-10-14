@@ -32,6 +32,26 @@
     <p class="hero-caption">Mode <strong id="hero-mode">Aléatoire</strong> · cliquez sur la palette pour en voir une autre</p>
   </section>
 
+  <!-- Couleur du jour -->
+  <section class="section container">
+    <div id="daily" class="daily">
+      <div class="daily-swatch">
+        <span id="daily-hex" class="daily-swatch-hex"></span>
+      </div>
+      <div class="daily-info">
+        <p class="eyebrow">Couleur du jour · <span id="daily-date"></span></p>
+        <h2 id="daily-name"></h2>
+        <p id="daily-hsl" class="daily-hsl"></p>
+        <div id="daily-shades" class="daily-shades" aria-label="Nuances de la couleur du jour"></div>
+        <p class="daily-text">Une nouvelle couleur chaque jour, la même pour tout le monde. Revenez demain pour découvrir la suivante.</p>
+        <div class="daily-actions">
+          <a id="daily-link" href="generator.html" class="btn btn-primary">Créer une palette avec →</a>
+          <button id="daily-copy" class="btn btn-ghost">Copier le code</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Modes -->
   <section id="modes" class="section container">
     <h2>Cinq façons d'assortir vos couleurs</h2>
@@ -103,7 +123,8 @@
   <!-- Call to action final -->
   <section class="cta container">
     <div id="cta-band" class="cta-band"></div>
-    <h2>Votre prochaine palette est à un clic.</h2>
+    <h2 id="cta-title" class="cta-title">Votre prochaine palette est à un clic.</h2>
+    <p class="cta-hint">Passez la souris sur les lettres.</p>
     <a href="generator.html" class="btn btn-primary btn-lg">Générer ma palette →</a>
   </section>
 

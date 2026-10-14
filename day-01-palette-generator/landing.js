@@ -50,3 +50,57 @@ Object.entries(MODES).forEach(([key, { label, description }]) => {
 
 // Bande de couleurs au-dessus du call to action final
 fillStrip(document.getElementById('cta-band'), sortByHue(buildPalette('analogous')));
+
+// ---------- Couleur du jour ----------
+
+const daily = colorOfTheDay();
+const dailyHex = hslToHex(daily);
+const dailyEl = document.getElementById('daily');
+
+dailyEl.style.setProperty('--daily', dailyHex);
+dailyEl.style.setProperty('--daily-text', textColorFor(daily));
+document.getElementById('daily-hex').textContent = dailyHex;
+document.getElementById('daily-name').textContent = daily.name;
+document.getElementById('daily-hsl').textContent =
+  `${dailyHex} · hsl(${daily.h}, ${daily.s}%, ${daily.l}%)`;
+document.getElementById('daily-date').textContent =
+  new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+// Cinq nuances, du plus foncé au plus clair
+document.getElementById('daily-shades').innerHTML = [20, 35, daily.l, 70, 85]
+  .map(l => `<span style="background: ${hslToHex({ ...daily, l })}"></span>`)
+  .join('');
+
+// Le générateur construit une palette autour de cette couleur (verrouillée)
+document.getElementById('daily-link').href = `generator.html?mode=analogous&base=${dailyHex.slice(1)}`;
+
+const dailyCopy = document.getElementById('daily-copy');
+dailyCopy.addEventListener('click', () => {
+  navigator.clipboard.writeText(dailyHex).then(() => {
+    dailyCopy.textContent = 'Copié ✓';
+    setTimeout(() => (dailyCopy.textContent = 'Copier le code'), 1500);
+  });
+});
+
+// ---------- Titre final : chaque lettre se colore au survol ----------
+
+// On découpe le titre en lettres, regroupées par mot pour que la ligne
+// ne se coupe jamais au milieu d'un mot.
+const ctaTitle = document.getElementById('cta-title');
+ctaTitle.setAttribute('aria-label', ctaTitle.textContent);
+ctaTitle.innerHTML = ctaTitle.textContent
+  .split(' ')
+  .map(word => `<span class="word" aria-hidden="true">${
+    [...word].map(ch => `<span class="letter">${ch}</span>`).join('')
+  }</span>`)
+  .join(' ');
+
+ctaTitle.addEventListener('mouseover', e => {
+  const letter = e.target.closest('.letter');
+  if (!letter) return;
+  // Couleur vive, assez foncée pour rester lisible sur le fond clair
+  letter.style.setProperty('--c', `hsl(${random(0, 359)}, 80%, 52%)`);
+  letter.classList.remove('is-lit');
+  void letter.offsetWidth; // relance l'animation même si la lettre était déjà allumée
+  letter.classList.add('is-lit');
+});

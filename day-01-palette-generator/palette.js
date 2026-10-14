@@ -122,9 +122,10 @@ function slugify(text) {
 
 // ---------- Génération ----------
 
-// Génère `count` couleurs selon le mode choisi
-function buildPalette(mode, count = COUNT) {
-  const base = random(0, 359);
+// Génère `count` couleurs selon le mode choisi.
+// `baseHue` (optionnel) : teinte autour de laquelle construire l'harmonie.
+function buildPalette(mode, count = COUNT, baseHue = random(0, 359)) {
+  const base = baseHue;
   const result = [];
   const step = count > 1 ? 1 / (count - 1) : 0; // de 0 à 1 sur la palette
 
@@ -183,4 +184,27 @@ function sortByHue(list) {
   }
 
   return [...sorted.slice(start), ...sorted.slice(0, start)];
+}
+
+// ---------- Couleur du jour ----------
+
+// La couleur est calculée à partir de la date (AAAA-MM-JJ) : elle reste la même
+// toute la journée, pour tout le monde, sans rien enregistrer. Elle change à minuit.
+function colorOfTheDay(date = new Date()) {
+  const key = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+  // Petit générateur pseudo-aléatoire initialisé avec la date (mulberry32)
+  let seed = [...key].reduce((acc, ch) => Math.imul(acc ^ ch.charCodeAt(0), 2654435761), 1779033703);
+  const rand = () => {
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+
+  return makeColor({
+    h: Math.floor(rand() * 360),
+    s: 55 + Math.floor(rand() * 26), // 55 à 80 % : ni terne, ni criard
+    l: 45 + Math.floor(rand() * 16), // 45 à 60 %
+  });
 }

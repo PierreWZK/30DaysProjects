@@ -92,9 +92,11 @@ modesEl.addEventListener('click', e => {
 
 function generate() {
   // On garde les couleurs verrouillées et on complète avec de nouvelles
-  const count = colors.length || COUNT;
+  const count = colors.length >= MIN_COLORS ? colors.length : COUNT;
   const kept = colors.filter(c => c.locked);
-  const fresh = buildPalette(mode, count).slice(0, count - kept.length);
+  // L'harmonie se construit autour de la première couleur verrouillée, s'il y en a une
+  const baseHue = kept.length ? Math.round(kept[0].h) : undefined;
+  const fresh = buildPalette(mode, count, baseHue).slice(0, count - kept.length);
   colors = sortByHue([...kept, ...fresh]);
   render();
 }
@@ -392,7 +394,18 @@ function loadFromUrl() {
     });
 
   // Une palette partagée garde l'ordre choisi par son auteur
-  if (loaded.length >= MIN_COLORS) colors = loaded;
+  if (loaded.length >= MIN_COLORS) {
+    colors = loaded;
+    return;
+  }
+
+  // Palette construite autour d'une couleur (ex. la couleur du jour) : generator.html?base=3A7BD5
+  const base = hexToHsl(params.get('base') || '');
+  if (base) {
+    const color = makeColor(base);
+    color.locked = true;
+    colors = [color];
+  }
 }
 
 function share() {
@@ -441,5 +454,5 @@ document.addEventListener('keydown', e => {
 
 loadFromUrl();
 renderModes();
-if (colors.length) render();
+if (colors.length >= MIN_COLORS) render();
 else generate();
