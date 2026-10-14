@@ -432,10 +432,16 @@ code, kbd {
   flex: 1;
 }
 
+.daily-desc {
+  margin: 18px 0 0;
+  max-width: 30em;
+}
+
 .daily-text {
   color: var(--muted);
-  margin: 18px 0 22px;
-  max-width: 28em;
+  font-size: 0.9rem;
+  margin: 10px 0 22px;
+  max-width: 30em;
 }
 
 .daily-actions {

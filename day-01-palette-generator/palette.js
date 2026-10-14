@@ -208,3 +208,31 @@ function colorOfTheDay(date = new Date()) {
     l: 45 + Math.floor(rand() * 16), // 45 à 60 %
   });
 }
+
+// Description courte d'une couleur, construite à partir de sa teinte,
+// de sa saturation et de sa luminosité.
+const HUE_FAMILIES = [
+  { max: 15, mood: 'la passion et l\'énergie', use: 'des boutons d\'appel à l\'action ou des alertes' },
+  { max: 45, mood: 'la chaleur et l\'enthousiasme', use: 'des marques conviviales ou des promotions' },
+  { max: 70, mood: 'l\'optimisme et la lumière', use: 'des mises en avant et des badges' },
+  { max: 160, mood: 'la nature et l\'équilibre', use: 'des messages de succès ou des marques écoresponsables' },
+  { max: 200, mood: 'la fraîcheur et la clarté', use: 'des interfaces tech ou des sites de bien-être' },
+  { max: 250, mood: 'la confiance et le calme', use: 'des sites professionnels, des liens ou des fonds sombres' },
+  { max: 290, mood: 'la créativité et le mystère', use: 'des marques créatives ou des dégradés' },
+  { max: 345, mood: 'l\'audace et la fantaisie', use: 'des accents ludiques ou des marques de mode' },
+  { max: 360, mood: 'la passion et l\'énergie', use: 'des boutons d\'appel à l\'action ou des alertes' },
+];
+
+function describeColor(color) {
+  const family = HUE_FAMILIES.find(f => color.h < f.max) || HUE_FAMILIES[0];
+
+  const temperature = color.h < 70 || color.h >= 330 ? 'chaude' : color.h >= 160 && color.h < 290 ? 'froide' : 'tempérée';
+  const intensity = color.s >= 70 ? 'vive' : 'nuancée';
+  const light = color.l >= 55 ? 'lumineuse' : color.l < 45 ? 'profonde' : 'franche';
+
+  const complement = makeColor({ ...color, h: (color.h + 180) % 360 });
+
+  return `Une teinte ${temperature}, ${intensity} et ${light}, qui évoque ${family.mood}. `
+    + `Parfaite pour ${family.use}. `
+    + `Elle s'accorde bien avec sa complémentaire, un ${complement.name.toLowerCase()} (${hslToHex(complement)}).`;
+}

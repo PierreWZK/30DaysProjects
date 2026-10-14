@@ -61,6 +61,7 @@ dailyEl.style.setProperty('--daily', dailyHex);
 dailyEl.style.setProperty('--daily-text', textColorFor(daily));
 document.getElementById('daily-hex').textContent = dailyHex;
 document.getElementById('daily-name').textContent = daily.name;
+document.getElementById('daily-desc').textContent = describeColor(daily);
 document.getElementById('daily-hsl').textContent =
   `${dailyHex} · hsl(${daily.h}, ${daily.s}%, ${daily.l}%)`;
 document.getElementById('daily-date').textContent =
