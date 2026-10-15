@@ -1,0 +1,10 @@
+# Configuration Netlify : prend le pas sur les réglages de l'interface Netlify.
+# Le script construit les projets qui en ont besoin (React…) et rassemble
+# tout le site dans _site/, qui est le dossier publié.
+
+[build]
+  command = "node scripts/build-site.mjs"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"

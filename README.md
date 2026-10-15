@@ -31,12 +31,21 @@ Chaque projet a son propre dossier `day-XX-nom/` qui contient :
 
 Les captures d'écran sont dans `preview-days-images/` et la page d'accueil du site lit la liste des projets dans `projects.js`.
 
+### Mise en ligne
+
+Le site est déployé sur Netlify (voir `netlify.toml`). À chaque déploiement, `scripts/build-site.mjs` rassemble tout le site dans `_site/` :
+
+- les projets en HTML, CSS et JavaScript simples sont copiés tels quels ;
+- les projets avec un script `build` (React, Vite…) sont construits, puis leur dossier `dist/` est copié.
+
+Pour vérifier en local : `node scripts/build-site.mjs`, puis servir le dossier `_site/` (par exemple `npx serve _site`).
+
 ### Les 30 projets
 
 | Jour | Projet | Techno | Statut | Démo |
 |:---:|---|---|:---:|:---:|
 | 01 | [Générateur de palettes avancé](./day-01-palette-generator) | JavaScript · CSS | ✅ | [🔗](https://30daysprojects.netlify.app/day-01-palette-generator/) |
-| 02 | [Mini-jeu Memory](./day-02-memory-game) | React | ⏳ | — |
+| 02 | [Écho, jeux de mémoire musicaux](./day-02-memory-game) | React · Vite | ✅ | [🔗](https://30daysprojects.netlify.app/day-02-memory-game/) |
 | 03 | [Suivi de bankroll poker](./day-03-poker-bankroll) | Laravel | ⏳ | — |
 | 04 | [Inspecteur de JSON](./day-04-json-inspector) | JavaScript | ⏳ | — |
 | 05 | [Watchlist films et séries](./day-05-watchlist) | Symfony | ⏳ | — |
@@ -95,12 +104,21 @@ Each project lives in its own `day-XX-name/` folder containing:
 
 Screenshots live in `preview-days-images/` and the site's home page reads the project list from `projects.js`.
 
+### Deployment
+
+The site is deployed on Netlify (see `netlify.toml`). On every deploy, `scripts/build-site.mjs` gathers the whole site into `_site/`:
+
+- plain HTML, CSS and JavaScript projects are copied as is;
+- projects with a `build` script (React, Vite…) are built, then their `dist/` folder is copied.
+
+To check locally: `node scripts/build-site.mjs`, then serve the `_site/` folder (for example `npx serve _site`).
+
 ### The 30 projects
 
 | Day | Project | Stack | Status | Demo |
 |:---:|---|---|:---:|:---:|
 | 01 | [Advanced color palette generator](./day-01-palette-generator) | JavaScript · CSS | ✅ | [🔗](https://30daysprojects.netlify.app/day-01-palette-generator/) |
-| 02 | [Memory game](./day-02-memory-game) | React | ⏳ | — |
+| 02 | [Écho, musical memory games](./day-02-memory-game) | React · Vite | ✅ | [🔗](https://30daysprojects.netlify.app/day-02-memory-game/) |
 | 03 | [Poker bankroll tracker](./day-03-poker-bankroll) | Laravel | ⏳ | — |
 | 04 | [JSON inspector](./day-04-json-inspector) | JavaScript | ⏳ | — |
 | 05 | [Movie and TV show watchlist](./day-05-watchlist) | Symfony | ⏳ | — |

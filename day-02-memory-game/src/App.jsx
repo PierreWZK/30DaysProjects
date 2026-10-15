@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import Landing from './pages/Landing.jsx'
+import Game from './pages/Game.jsx'
+import Daily from './pages/Daily.jsx'
+import Duel from './pages/Duel.jsx'
+import Sequence from './pages/Sequence.jsx'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// Navigation par l'ancre de l'URL : #/ (accueil), #/jouer (memory), #/defi (défi du jour)
+// #/duel (duel contre l'ordinateur) et #/sequence (Écho Séquence).
+// Pas besoin de bibliothèque de routage, et ça marche dans un sous-dossier
+// sans configuration du serveur.
+function getRoute() {
+  return window.location.hash.replace(/^#/, '') || '/'
 }
 
-export default App
+export default function App() {
+  const [route, setRoute] = useState(getRoute)
+
+  useEffect(() => {
+    const onChange = () => {
+      setRoute(getRoute())
+      window.scrollTo(0, 0)
+    }
+    window.addEventListener('hashchange', onChange)
+    return () => window.removeEventListener('hashchange', onChange)
+  }, [])
+
+  if (route === '/jouer') return <Game />
+  if (route === '/defi') return <Daily />
+  if (route === '/duel') return <Duel />
+  if (route === '/sequence') return <Sequence />
+  return <Landing />
+}
