@@ -2,8 +2,8 @@
 // Pour mettre à jour un projet : changer `status`, ajouter `name`, `description` et `image`.
 //   status : 'todo' (à venir) · 'progress' (en cours) · 'done' (terminé)
 //   image  : capture placée dans preview-days-images/
-//   url    : adresse du projet en ligne (chaque projet a son propre dépôt et son domaine).
-//            Sans url, la carte pointe vers ./<folder>/
+//   url    : adresse du projet en ligne. Sans url, la carte n'est pas cliquable.
+//   repo   : dépôt GitHub du projet (chaque projet a son propre dépôt), affiché dans le README
 
 const PROJECTS = [
   {
@@ -15,6 +15,7 @@ const PROJECTS = [
     status: 'done',
     image: 'preview-days-images/day1_nuance.png',
     url: 'https://nuancecolor.netlify.app/',
+    repo: 'https://github.com/PierreWZK/Nuance',
     description: '5 modes d\'harmonie, couleurs triées par teinte, verrouillage, noms modifiables, glisser-déposer. Export CSS ou PNG et partage par lien.',
   },
   {
@@ -25,7 +26,8 @@ const PROJECTS = [
     stack: ['React', 'Vite', 'Web Audio'],
     status: 'done',
     image: 'preview-days-images/day2_echo.png',
-    url: 'https://30daysprojects.netlify.app/day-02-memory-game/', // à remplacer par le domaine du projet
+    url: 'https://memory-echo.netlify.app/',
+    repo: 'https://github.com/PierreWZK/Echo',
     description: 'Un memory où chaque paire a une forme, une couleur et une note. Mode Écoute, défi du jour à partager, duel contre l\'ordinateur et séquences à rejouer.',
   },
   {
@@ -35,7 +37,7 @@ const PROJECTS = [
     title: 'Suivi de bankroll poker',
     stack: ['Laravel', 'Blade', 'Chart.js'],
     status: 'progress',
-    url: 'https://github.com/PierreWZK/30DaysProjects/tree/master/day-03-poker-bankroll', // projet PHP : pas hébergé sur Netlify
+    // Pas encore d'url ni de dépôt : projet Laravel maintenu en local pour l'instant
     description: 'Suivez vos sessions de poker et vos vrais chiffres : profit net, taux horaire, courbe de résultats et filtres par format et période.',
   },
   { day: 4, folder: 'day-04-json-inspector', title: 'Inspecteur de JSON', stack: ['JavaScript'], status: 'todo' },

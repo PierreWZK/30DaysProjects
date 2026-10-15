@@ -98,7 +98,8 @@
 
     const STATUS_LABELS = { done: 'Terminé', progress: 'En cours', todo: 'À venir' };
     const pad = n => String(n).padStart(2, '0');
-    const isOpen = p => p.status !== 'todo'; // lien actif pour les projets commencés
+    const isOpen = p => p.status !== 'todo'; // projet commencé ou terminé
+    const hasLink = p => isOpen(p) && Boolean(p.url); // carte cliquable : seulement avec une adresse en ligne
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     // Échappe le texte avant de l'insérer dans le HTML
@@ -227,11 +228,8 @@
 
     function cardHtml(p) {
       const accent = CATEGORIES[categoryOf(p)];
-      const tag = isOpen(p) ? 'a' : 'div';
-      const external = Boolean(p.url)
-      const href = isOpen(p)
-        ? ` href="${esc(p.url || `./${p.folder}/`)}"${external ? ' target="_blank" rel="noopener"' : ''}`
-        : '';
+      const tag = hasLink(p) ? 'a' : 'div';
+      const href = hasLink(p) ? ` href="${esc(p.url)}" target="_blank" rel="noopener"` : '';
 
       const preview = p.image
         ? `<img src="${p.image}" alt="Aperçu de ${esc(p.name || p.title)}" loading="lazy"
@@ -251,7 +249,7 @@
             ${p.description ? `<p class="card-desc">${esc(p.description)}</p>` : ''}
             <div class="card-footer">
               <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
-              ${isOpen(p) ? '<span class="card-arrow">Voir →</span>' : ''}
+              ${hasLink(p) ? '<span class="card-arrow">Voir →</span>' : ''}
             </div>
           </div>
         </${tag}>
