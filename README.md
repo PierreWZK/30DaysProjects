@@ -12,7 +12,7 @@ Elle présente la progression du défi (calendrier des 30 jours) et une carte pa
 
 | Jour | Projet | Techno | Statut | Lien |
 |:---:|---|---|:---:|:---:|
-| 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://30daysprojects.netlify.app/day-01-palette-generator/) |
+| 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://nuancecolor.netlify.app/) |
 | 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://30daysprojects.netlify.app/day-02-memory-game/) |
 | 03 | **RiverLog** · Suivi de bankroll poker | Laravel · Blade · Chart.js | 🚧 | [🔗](https://github.com/PierreWZK/30DaysProjects/tree/master/day-03-poker-bankroll) |
 | 04 | Inspecteur de JSON | JavaScript | ⏳ | — |

@@ -14,7 +14,7 @@ const PROJECTS = [
     stack: ['JavaScript', 'CSS'],
     status: 'done',
     image: 'preview-days-images/day1_nuance.png',
-    url: 'https://30daysprojects.netlify.app/day-01-palette-generator/', // à remplacer par le domaine du projet
+    url: 'https://nuancecolor.netlify.app/',
     description: '5 modes d\'harmonie, couleurs triées par teinte, verrouillage, noms modifiables, glisser-déposer. Export CSS ou PNG et partage par lien.',
   },
   {
