@@ -1,0 +1,4 @@
+[build]
+  # Assemble le portail + chaque projet (buildé ou statique) dans dist/
+  command = "node scripts/build.mjs"
+  publish = "dist"
