@@ -1,8 +1,12 @@
 # 30 Days, 30 Projects · Site vitrine
 
+🌐 **[30daysprojects.netlify.app](https://30daysprojects.netlify.app/)**
+
 La page d'accueil du défi **30 jours, 30 projets** : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.
 
 Elle présente la progression du défi (calendrier des 30 jours) et une carte par projet, avec sa capture d'écran, ses technos et son lien.
+
+[![Aperçu du site vitrine](docs/preview.png)](https://30daysprojects.netlify.app/)
 
 ## Les 30 projets
 
@@ -51,6 +55,7 @@ Ce tableau reprend `projects.js` : pense à le mettre à jour en même temps que
 | `style.css` | Les styles |
 | `projects.js` | **La liste des 30 projets** : c'est le seul fichier à modifier au quotidien |
 | `preview-days-images/` | Les captures d'écran des projets |
+| `docs/preview.png` | La capture du site vitrine, affichée dans ce README |
 | `netlify.toml` | La configuration Netlify (site statique, sans construction) |
 
 ## Ajouter ou mettre à jour un projet
