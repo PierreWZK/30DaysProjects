@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30 jours, 30 projets</title>
+  <meta name="description" content="Défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230e0e11'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff6b6b'/%3E%3Cstop offset='.35' stop-color='%23ffb23d'/%3E%3Cstop offset='.6' stop-color='%236bcb77'/%3E%3Cstop offset='.8' stop-color='%234d96ff'/%3E%3Cstop offset='1' stop-color='%23b06bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='url(%23g)' stroke-width='3.5' stroke-dasharray='2.03 0.9' transform='rotate(-90 20 20)'/%3E%3Ctext x='20' y='20.5' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-weight='800' font-size='12' fill='%23ededf0'%3E30%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav container">
+    <a href="./" class="logo" aria-label="30 Days, 30 Projects, accueil">
+      <!-- Logo : un anneau de 30 segments (un par jour) autour du chiffre 30 -->
+      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff6b6b" />
+            <stop offset="0.35" stop-color="#ffb23d" />
+            <stop offset="0.6" stop-color="#6bcb77" />
+            <stop offset="0.8" stop-color="#4d96ff" />
+            <stop offset="1" stop-color="#b06bff" />
+          </linearGradient>
+        </defs>
+        <g class="logo-ring">
+          <!-- Circonférence 2π×17 ≈ 106.8, divisée en 30 segments de 3.56 -->
+          <circle cx="20" cy="20" r="17" fill="none" stroke="url(#logo-gradient)" stroke-width="4"
+                  stroke-dasharray="2.46 1.1" transform="rotate(-90 20 20)" />
+        </g>
+        <text x="20" y="20.5" text-anchor="middle" dominant-baseline="central"
+              font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13"
+              fill="currentColor">30</text>
+      </svg>
+      <span class="logo-text">30 Days <small>30 Projects</small></span>
+    </a>
+    <a href="https://github.com/PierreWZK/30DaysProjects" class="nav-link" target="_blank" rel="noopener">Code source ↗</a>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+
+      <p class="eyebrow">Le défi</p>
+      <!-- Le texte complet est dans aria-label : les lecteurs d'écran ne lisent pas l'animation -->
+      <h1 aria-label="30 jours. 30 projets.">
+        <span class="line" aria-hidden="true"><span id="type-1"></span></span>
+        <span class="line" aria-hidden="true"><span id="type-2" class="rainbow"></span></span>
+      </h1>
+      <p class="lead">
+        Un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.
+        Au programme : JavaScript, React, Next.js, Laravel, Symfony et quelques autres technos.
+        Le défi se termine par un portfolio en Next.js qui présente les 30 projets.
+      </p>
+
+      <div class="progress">
+        <div class="progress-head">
+          <span class="progress-count"><span id="done-count">0</span> <small>/ 30 projets livrés</small></span>
+          <span id="progress-stats" class="progress-stats"></span>
+        </div>
+        <nav id="calendar" class="calendar" aria-label="Progression jour par jour"></nav>
+      </div>
+    </section>
+
+    <section id="projets" class="projects container">
+      <div class="projects-head">
+        <h2>Les projets</h2>
+        <div id="filters" class="filters" role="group" aria-label="Filtrer par techno"></div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>30 Days, 30 Projects</span>
+    <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">github.com/PierreWZK/30DaysProjects</a>
+  </footer>
+
+  <script src="projects.js"></script>
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Familles de technos pour les filtres, avec leur couleur
+    const CATEGORIES = {
+      'JavaScript': '#f7df1e',
+      'React': '#61dafb',
+      'Next.js': '#ededf0',
+      'Laravel': '#ff5a4f',
+      'Symfony': '#a78bfa',
+      'Autres': '#34d399',
+    };
+
+    // La famille d'un projet = sa première techno (Angular, Java… vont dans « Autres »)
+    const categoryOf = p => (CATEGORIES[p.stack[0]] ? p.stack[0] : 'Autres');
+
+    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours', todo: 'À venir' };
+    const pad = n => String(n).padStart(2, '0');
+    const isOpen = p => p.status !== 'todo'; // lien actif pour les projets commencés
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    // Échappe le texte avant de l'insérer dans le HTML
+    const esc = text => String(text).replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+
+    let activeFilter = 'Tous';
+
+    // ---------- Titre en machine à écrire ----------
+
+    // Écrit « 30 jours. » puis « 30 projets. », laisse le temps de lire,
+    // efface, et recommence.
+    async function typewriter() {
+      const lines = [
+        { el: document.getElementById('type-1'), text: '30 jours.' },
+        { el: document.getElementById('type-2'), text: '30 projets.' },
+      ];
+
+      if (reducedMotion) {
+        lines.forEach(l => (l.el.textContent = l.text));
+        return;
+      }
+
+      const caret = document.createElement('span');
+      caret.className = 'caret';
+
+      // Le curseur suit la ligne en cours d'écriture
+      const moveCaret = line => line.el.parentNode.appendChild(caret);
+
+      while (true) {
+        caret.classList.add('is-typing');
+        for (const line of lines) {
+          moveCaret(line);
+          for (const char of line.text) {
+            line.el.textContent += char;
+            await sleep(70 + Math.random() * 60); // rythme irrégulier, plus naturel
+          }
+          await sleep(350);
+        }
+
+        caret.classList.remove('is-typing');
+        await sleep(4500); // le temps de lire
+
+        caret.classList.add('is-typing');
+        for (const line of [...lines].reverse()) {
+          moveCaret(line);
+          while (line.el.textContent) {
+            line.el.textContent = line.el.textContent.slice(0, -1);
+            await sleep(35);
+          }
+        }
+
+        caret.classList.remove('is-typing');
+        await sleep(700);
+      }
+    }
+
+    // ---------- Progression ----------
+
+    // Fait défiler un nombre de 0 jusqu'à sa valeur
+    function countUp(el, target) {
+      if (reducedMotion || target === 0) {
+        el.textContent = target;
+        return;
+      }
+      const start = performance.now();
+      const duration = 900;
+      (function frame(now) {
+        const t = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(target * (1 - (1 - t) ** 3));
+        if (t < 1) requestAnimationFrame(frame);
+      })(start);
+    }
+
+    function renderProgress() {
+      const done = PROJECTS.filter(p => p.status === 'done').length;
+      const stacks = new Set(PROJECTS.filter(isOpen).flatMap(p => p.stack));
+
+      countUp(document.getElementById('done-count'), done);
+      document.getElementById('progress-stats').textContent =
+        `${stacks.size} techno${stacks.size > 1 ? 's' : ''} utilisée${stacks.size > 1 ? 's' : ''} · ${30 - done} à venir`;
+
+      document.getElementById('calendar').innerHTML = PROJECTS.map((p, i) => `
+        <a class="day is-${p.status}" href="#jour-${pad(p.day)}"
+           title="Jour ${pad(p.day)} · ${esc(p.name || p.title)} (${STATUS_LABELS[p.status]})"
+           style="--i: ${i}; background-position: ${((p.day - 1) / 29) * 100}% 0">${p.day}</a>
+      `).join('');
+
+      // Un clic sur une case affiche tous les projets, pour que la carte soit visible
+      document.querySelectorAll('.day').forEach(el => el.addEventListener('click', () => {
+        if (activeFilter !== 'Tous') setFilter('Tous');
+      }));
+    }
+
+    // ---------- Filtres ----------
+
+    function renderFilters() {
+      const counts = { Tous: PROJECTS.length };
+      PROJECTS.forEach(p => {
+        const c = categoryOf(p);
+        counts[c] = (counts[c] || 0) + 1;
+      });
+
+      document.getElementById('filters').innerHTML = ['Tous', ...Object.keys(CATEGORIES)]
+        .filter(name => counts[name])
+        .map(name => `
+          <button class="filter${name === activeFilter ? ' is-active' : ''}" data-filter="${name}">
+            ${name} <span class="filter-count">${counts[name]}</span>
+          </button>
+        `).join('');
+    }
+
+    function setFilter(name) {
+      activeFilter = name;
+      renderFilters();
+      renderGrid();
+    }
+
+    document.getElementById('filters').addEventListener('click', e => {
+      const btn = e.target.closest('.filter');
+      if (btn) setFilter(btn.dataset.filter);
+    });
+
+    // ---------- Cartes ----------
+
+    function cardHtml(p) {
+      const accent = CATEGORIES[categoryOf(p)];
+      const tag = isOpen(p) ? 'a' : 'div';
+      const external = Boolean(p.url)
+      const href = isOpen(p)
+        ? ` href="${esc(p.url || `./${p.folder}/`)}"${external ? ' target="_blank" rel="noopener"' : ''}`
+        : '';
+
+      const preview = p.image
+        ? `<img src="${p.image}" alt="Aperçu de ${esc(p.name || p.title)}" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'preview-empty', innerHTML: '<span>${pad(p.day)}</span>'}))">`
+        : `<div class="preview-empty"><span>${pad(p.day)}</span></div>`;
+
+      return `
+        <${tag} class="card reveal is-${p.status}" id="jour-${pad(p.day)}"${href} style="--accent: ${accent}">
+          <div class="preview">${preview}</div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span>Jour ${pad(p.day)}</span>
+              <span class="status is-${p.status}">${STATUS_LABELS[p.status]}</span>
+            </div>
+            <h3>${esc(p.name || p.title)}</h3>
+            ${p.name ? `<p class="card-title">${esc(p.title)}</p>` : ''}
+            ${p.description ? `<p class="card-desc">${esc(p.description)}</p>` : ''}
+            <div class="card-footer">
+              <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
+              ${isOpen(p) ? '<span class="card-arrow">Voir →</span>' : ''}
+            </div>
+          </div>
+        </${tag}>
+      `;
+    }
+
+    // Les cartes apparaissent en fondu quand elles entrent à l'écran
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const card = entry.target;
+        revealObserver.unobserve(card);
+        card.classList.add('is-visible');
+        // Une fois apparue, la carte retrouve ses transitions de survol normales
+        setTimeout(() => {
+          card.classList.remove('reveal', 'is-visible');
+          card.style.transitionDelay = '';
+        }, 900);
+      });
+    }, { threshold: 0.1 });
+
+    function renderGrid() {
+      const grid = document.getElementById('grid');
+      const list = PROJECTS.filter(p => activeFilter === 'Tous' || categoryOf(p) === activeFilter);
+
+      grid.innerHTML = list.length
+        ? list.map(cardHtml).join('')
+        : '<p class="empty">Aucun projet pour ce filtre.</p>';
+
+      grid.querySelectorAll('.card').forEach((card, i) => {
+        card.style.transitionDelay = `${(i % 3) * 80}ms`; // léger décalage par colonne
+        if (reducedMotion) card.classList.remove('reveal');
+        else revealObserver.observe(card);
+      });
+    }
+
+    // Halo qui suit la souris sur les cartes
+    document.getElementById('grid').addEventListener('pointermove', e => {
+      const card = e.target.closest('.card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    });
+
+    typewriter();
+    renderProgress();
+    renderFilters();
+    renderGrid();
+  </script>
+</body>
+</html>

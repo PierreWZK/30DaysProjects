@@ -1,0 +1,3 @@
+# Site vitrine du défi : des fichiers statiques, sans étape de construction.
+[build]
+  publish = "."
