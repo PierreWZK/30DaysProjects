@@ -1,2 +1,2 @@
-# Site construit par scripts/build-site.mjs (recréé à chaque déploiement)
-_site/
+node_modules
+dist
