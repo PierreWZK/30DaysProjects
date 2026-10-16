@@ -16,7 +16,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 |:---:|---|---|:---:|:---:|:---:|
 | 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://nuancecolor.netlify.app/) | [GitHub](https://github.com/PierreWZK/Nuance) |
 | 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://memory-echo.netlify.app/) | [GitHub](https://github.com/PierreWZK/Echo) |
-| 03 | **RiverLog** · Suivi de bankroll poker | Laravel · Blade · Chart.js | 🚧 | — | — |
+| 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.alwaysdata.net/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
 | 04 | Inspecteur de JSON | JavaScript | ⏳ | — | — |
 | 05 | Watchlist films et séries | Symfony | ⏳ | — | — |
 | 06 | Jeu de réflexes | JavaScript · CSS | ⏳ | — | — |
