@@ -281,6 +281,25 @@ a {
 .day.is-progress {
   border-color: #ffb23d;
   color: #ffb23d;
+  /* Jour en cours : léger halo qui pulse */
+  animation: pop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.2) backwards, pulse 2.4s ease-in-out 1s infinite;
+  animation-delay: calc(var(--i) * 25ms + 200ms), 1s;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 4px #ffb23d26;
+  }
+}
+
+.day.is-late {
+  border-color: #ff6b6b;
+  background: #ff6b6b1f;
+  color: #ff6b6b;
+}
+
+.progress-stats .is-late {
+  color: #ff6b6b;
 }
 
 /* ---------- Projets ---------- */
@@ -479,6 +498,16 @@ a.card:hover .preview img {
 .status.is-progress {
   color: #ffb23d;
   border-color: #ffb23d55;
+}
+
+.status.is-late {
+  color: #ff6b6b;
+  border-color: #ff6b6b55;
+  background: #ff6b6b14;
+}
+
+.card.is-late {
+  border-color: #ff6b6b55;
 }
 
 .card h3 {

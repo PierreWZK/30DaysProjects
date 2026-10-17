@@ -96,8 +96,36 @@
     // La famille d'un projet = sa première techno (Angular, Java… vont dans « Autres »)
     const categoryOf = p => (CATEGORIES[p.stack[0]] ? p.stack[0] : 'Autres');
 
-    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours', todo: 'À venir' };
+    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours de développement', late: 'En retard', todo: 'À venir' };
+    const DAY_MS = 24 * 60 * 60 * 1000;
     const pad = n => String(n).padStart(2, '0');
+
+    // ---------- Statut automatique ----------
+
+    // Minuit (heure locale) d'une date
+    const midnight = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    // Jour du défi aujourd'hui : 1 le jour de CHALLENGE_START, 0 ou moins avant le début
+    function challengeDay(now = new Date()) {
+      const [y, m, d] = CHALLENGE_START.split('-').map(Number);
+      // Math.round absorbe l'heure gagnée ou perdue aux changements d'heure
+      return Math.round((midnight(now) - new Date(y, m - 1, d)) / DAY_MS) + 1;
+    }
+
+    // Seul « done » est saisi à la main dans projects.js, le reste dépend de la date
+    function statusOf(p, today) {
+      if (p.status === 'done') return 'done';
+      if (p.day === today) return 'progress';
+      return p.day < today ? 'late' : 'todo';
+    }
+
+    const today = challengeDay();
+    PROJECTS.forEach(p => (p.status = statusOf(p, today)));
+
+    // Page laissée ouverte : on la recharge à minuit pour passer au jour suivant
+    const now = new Date();
+    setTimeout(() => location.reload(), midnight(now).getTime() + DAY_MS - now.getTime() + 1000);
+
     const isOpen = p => p.status !== 'todo'; // projet commencé ou terminé
     const hasLink = p => isOpen(p) && Boolean(p.url); // carte cliquable : seulement avec une adresse en ligne
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -176,15 +204,20 @@
     }
 
     function renderProgress() {
-      const done = PROJECTS.filter(p => p.status === 'done').length;
-      const stacks = new Set(PROJECTS.filter(isOpen).flatMap(p => p.stack));
+      const count = status => PROJECTS.filter(p => p.status === status).length;
+      const done = count('done');
+      const late = count('late');
+      const stacks = new Set(PROJECTS.filter(p => p.status === 'done' || p.status === 'progress').flatMap(p => p.stack));
 
       countUp(document.getElementById('done-count'), done);
-      document.getElementById('progress-stats').textContent =
-        `${stacks.size} techno${stacks.size > 1 ? 's' : ''} utilisée${stacks.size > 1 ? 's' : ''} · ${30 - done} à venir`;
+      document.getElementById('progress-stats').innerHTML = [
+        `${stacks.size} techno${stacks.size > 1 ? 's' : ''} utilisée${stacks.size > 1 ? 's' : ''}`,
+        late ? `<span class="is-late">${late} en retard</span>` : '',
+        `${30 - done - late} à venir`,
+      ].filter(Boolean).join(' · ');
 
       document.getElementById('calendar').innerHTML = PROJECTS.map((p, i) => `
-        <a class="day is-${p.status}" href="#jour-${pad(p.day)}"
+        <a class="day is-${p.status}" href="#jour-${pad(p.day)}"${p.status === 'progress' ? ' aria-current="date"' : ''}
            title="Jour ${pad(p.day)} · ${esc(p.name || p.title)} (${STATUS_LABELS[p.status]})"
            style="--i: ${i}; background-position: ${((p.day - 1) / 29) * 100}% 0">${p.day}</a>
       `).join('');

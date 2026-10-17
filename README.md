@@ -17,8 +17,8 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://nuancecolor.netlify.app/) | [GitHub](https://github.com/PierreWZK/Nuance) |
 | 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://memory-echo.netlify.app/) | [GitHub](https://github.com/PierreWZK/Echo) |
 | 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.alwaysdata.net/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
-| 04 | Inspecteur de JSON | JavaScript | ⏳ | — | — |
-| 05 | Watchlist films et séries | Symfony | ⏳ | — | — |
+| 04 | **3logy** · Hub geek (dev + jeux + ciné) | JavaScript · API RAWG · API TMDB | ✅ | [🔗](https://3logy.netlify.app/) | [GitHub](https://github.com/PierreWZK/3logy) |
+| 05 | Réservation de créneaux | Symfony · EasyAdmin | ⏳ | — | — |
 | 06 | Jeu de réflexes | JavaScript · CSS | ⏳ | — | — |
 | 07 | Dashboard de dépenses | React · Recharts | ⏳ | — | — |
 | 08 | Raccourcisseur d'URL avec statistiques | Laravel | ⏳ | — | — |
@@ -35,7 +35,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 19 | Tracker de succès gaming | Laravel · Livewire | ⏳ | — | — |
 | 20 | Catalogue de jeux vidéo | Angular | ⏳ | — | — |
 | 21 | Visualiseur de données automobiles | JavaScript · Chart.js | ⏳ | — | — |
-| 22 | Réservation de créneaux | Symfony · EasyAdmin | ⏳ | — | — |
+| 22 | Watchlist films et séries | Symfony | ⏳ | — | — |
 | 23 | Comparaison de fichiers texte | JavaScript | ⏳ | — | — |
 | 24 | API de statistiques de jeux vidéo | Java · Spring Boot | ⏳ | — | — |
 | 25 | Puissance 4 avec IA | JavaScript · Canvas | ⏳ | — | — |
@@ -71,7 +71,7 @@ Dans `projects.js`, chaque projet a cette forme :
   name: 'Écho',                          // nom du projet
   title: 'Jeux de mémoire musicaux',     // ce qu'il fait
   stack: ['React', 'Vite', 'Web Audio'], // la 1re techno donne la couleur et le filtre
-  status: 'done',                        // 'todo', 'progress' ou 'done'
+  status: 'done',                        // seulement quand le projet est terminé
   image: 'preview-days-images/day2_echo.png',
   url: 'https://memory-echo.netlify.app/', // adresse du projet en ligne
   repo: 'https://github.com/PierreWZK/Echo', // dépôt GitHub du projet
@@ -79,7 +79,20 @@ Dans `projects.js`, chaque projet a cette forme :
 },
 ```
 
-Le calendrier, le compteur, les filtres et les cartes se mettent à jour tout seuls. Une carte est cliquable dès que le projet est commencé (`progress` ou `done`) **et** qu'il a une `url`. Le champ `repo` sert au tableau de ce README.
+Le calendrier, le compteur, les filtres et les cartes se mettent à jour tout seuls. Une carte est cliquable dès qu'elle a une `url` et que son jour est arrivé. Le champ `repo` sert au tableau de ce README.
+
+### Statut automatique
+
+Seul `status: 'done'` se saisit à la main. Pour les autres projets, le statut dépend de la date du jour, à partir de `CHALLENGE_START` (jour 1, en haut de `projects.js`) :
+
+| Situation | Statut affiché |
+| --- | --- |
+| `status: 'done'` | Terminé |
+| C'est le jour du projet | En cours de développement (orange) |
+| Le jour est passé, projet pas encore `done` | En retard (rouge) |
+| Le jour n'est pas encore arrivé | À venir |
+
+Exemple : au jour 5, si le projet du jour 4 n'est toujours pas passé à `done`, il s'affiche « En retard » et le jour 5 « En cours de développement ». Une page laissée ouverte se recharge à minuit.
 
 ## Lancer en local
 
