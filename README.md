@@ -1,6 +1,6 @@
 # 30 Days, 30 Projects · Site vitrine
 
-🌐 **[30daysprojects.netlify.app](https://30daysprojects.netlify.app/)**
+🌐 **[projectp.fr](https://projectp.fr/)**
 
 La page d'accueil du défi **30 jours, 30 projets** : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.
 
@@ -8,16 +8,16 @@ Elle présente la progression du défi (calendrier des 30 jours) et une carte pa
 
 Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : voir les colonnes « Démo » et « Code » ci-dessous.
 
-[![Aperçu du site vitrine](docs/preview.png)](https://30daysprojects.netlify.app/)
+[![Aperçu du site vitrine](docs/preview.png)](https://projectp.fr/)
 
 ## Les 30 projets
 
 | Jour | Projet | Techno | Statut | Démo | Code |
 |:---:|---|---|:---:|:---:|:---:|
-| 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://nuancecolor.netlify.app/) | [GitHub](https://github.com/PierreWZK/Nuance) |
-| 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://memory-echo.netlify.app/) | [GitHub](https://github.com/PierreWZK/Echo) |
-| 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.alwaysdata.net/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
-| 04 | **3logy** · Hub geek (dev + jeux + ciné) | JavaScript · API RAWG · API TMDB | ✅ | [🔗](https://3logy.netlify.app/) | [GitHub](https://github.com/PierreWZK/3logy) |
+| 01 | **Nuance** · Générateur de palettes avancé | JavaScript · CSS | ✅ | [🔗](https://nuance.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Nuance) |
+| 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://echo.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Echo) |
+| 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.projectp.fr/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
+| 04 | **3logy** · Hub geek (dev + jeux + ciné) | JavaScript · API RAWG · API TMDB | ✅ | [🔗](https://3logy.projectp.fr/) | [GitHub](https://github.com/PierreWZK/3logy) |
 | 05 | Réservation de créneaux | Symfony · EasyAdmin | ⏳ | — | — |
 | 06 | Jeu de réflexes | JavaScript · CSS | ⏳ | — | — |
 | 07 | Dashboard de dépenses | React · Recharts | ⏳ | — | — |
@@ -73,7 +73,7 @@ Dans `projects.js`, chaque projet a cette forme :
   stack: ['React', 'Vite', 'Web Audio'], // la 1re techno donne la couleur et le filtre
   status: 'done',                        // seulement quand le projet est terminé
   image: 'preview-days-images/day2_echo.png',
-  url: 'https://memory-echo.netlify.app/', // adresse du projet en ligne
+  url: 'https://echo.projectp.fr/', // adresse du projet en ligne
   repo: 'https://github.com/PierreWZK/Echo', // dépôt GitHub du projet
   description: '…',
 },
