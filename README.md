@@ -18,7 +18,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 02 | **Écho** · Jeux de mémoire musicaux | React · Vite · Web Audio | ✅ | [🔗](https://echo.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Echo) |
 | 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.projectp.fr/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
 | 04 | **3logy** · Hub geek (dev + jeux + ciné) | JavaScript · API RAWG · API TMDB | ✅ | [🔗](https://3logy.projectp.fr/) | [GitHub](https://github.com/PierreWZK/3logy) |
-| 05 | Réservation de créneaux | Symfony · EasyAdmin | ⏳ | — | — |
+| 05 | **Kairos** · Réservation de créneaux | Symfony · EasyAdmin · MySQL | ✅ | [🔗](https://kairos.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Kairos) |
 | 06 | Jeu de réflexes | JavaScript · CSS | ⏳ | — | — |
 | 07 | Dashboard de dépenses | React · Recharts | ⏳ | — | — |
 | 08 | Raccourcisseur d'URL avec statistiques | Laravel | ⏳ | — | — |
