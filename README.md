@@ -58,6 +58,8 @@ Ce tableau reprend `projects.js` : pense à le mettre à jour en même temps que
 | `projects.js` | **La liste des 30 projets** : c'est le seul fichier à modifier au quotidien |
 | `preview-days-images/` | Les captures d'écran des projets |
 | `docs/preview.png` | La capture du site vitrine, affichée dans ce README |
+| `docs/og.png` | L'image d'aperçu du lien quand on le partage |
+| `CAHIER_DES_CHARGES.md` | Ce que fait le site, règle par règle |
 
 ## Ajouter ou mettre à jour un projet
 
