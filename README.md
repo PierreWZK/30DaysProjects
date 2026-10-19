@@ -19,7 +19,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 03 | **RiverLog** · Suivi de bankroll poker | Laravel · MySQL · Chart.js | ✅ | [🔗](https://riverlog.projectp.fr/) | [GitHub](https://github.com/PierreWZK/RiverLog) |
 | 04 | **3logy** · Hub geek (dev + jeux + ciné) | JavaScript · API RAWG · API TMDB | ✅ | [🔗](https://3logy.projectp.fr/) | [GitHub](https://github.com/PierreWZK/3logy) |
 | 05 | **Kairos** · Réservation de créneaux | Symfony · EasyAdmin · MySQL | ✅ | [🔗](https://kairos.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Kairos) |
-| 06 | Jeu de réflexes | JavaScript · CSS | ⏳ | — | — |
+| 06 | **Sursaut** · Jeu de réflexes | JavaScript · CSS · Web Audio | ✅ | [🔗](https://sursaut.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Sursaut) |
 | 07 | Dashboard de dépenses | React · Recharts | ⏳ | — | — |
 | 08 | Raccourcisseur d'URL avec statistiques | Laravel | ⏳ | — | — |
 | 09 | Comparateur de voitures | Symfony | ⏳ | — | — |
@@ -58,7 +58,6 @@ Ce tableau reprend `projects.js` : pense à le mettre à jour en même temps que
 | `projects.js` | **La liste des 30 projets** : c'est le seul fichier à modifier au quotidien |
 | `preview-days-images/` | Les captures d'écran des projets |
 | `docs/preview.png` | La capture du site vitrine, affichée dans ce README |
-| `netlify.toml` | La configuration Netlify (site statique, sans construction) |
 
 ## Ajouter ou mettre à jour un projet
 
@@ -100,4 +99,4 @@ Aucune installation : ouvrir `index.html` dans le navigateur, ou servir le dossi
 
 ## Mise en ligne
 
-Site statique : Netlify publie le dossier tel quel (`publish = "."` dans `netlify.toml`).
+Site statique hébergé sur Coolify : le dossier est publié tel quel, sans étape de construction, à chaque push sur `master`.
