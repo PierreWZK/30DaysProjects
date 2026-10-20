@@ -3,25 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>30 jours, 30 projets</title>
-  <meta name="description" content="Défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.">
+  <title>ProjectP · 30 jours, 30 projets codés avec Claude</title>
+  <meta name="description" content="ProjectP, le défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures avec l'aide de Claude, en JavaScript, React, Next.js, Laravel et Symfony.">
   <meta name="theme-color" content="#0e0e11">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
-  <meta property="og:site_name" content="30 jours, 30 projets">
-  <meta property="og:title" content="30 jours, 30 projets">
-  <meta property="og:description" content="Défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.">
+  <meta property="og:site_name" content="ProjectP">
+  <meta property="og:title" content="ProjectP · 30 jours, 30 projets codés avec Claude">
+  <meta property="og:description" content="ProjectP, le défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures avec l'aide de Claude.">
   <meta property="og:url" content="https://projectp.fr/">
+  <link rel="canonical" href="https://projectp.fr/">
   <meta property="og:image" content="https://projectp.fr/docs/og.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="30 jours, 30 projets · aperçu du site">
+  <meta property="og:image:alt" content="ProjectP · aperçu du site">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230e0e11'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff6b6b'/%3E%3Cstop offset='.35' stop-color='%23ffb23d'/%3E%3Cstop offset='.6' stop-color='%236bcb77'/%3E%3Cstop offset='.8' stop-color='%234d96ff'/%3E%3Cstop offset='1' stop-color='%23b06bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='url(%23g)' stroke-width='3.5' stroke-dasharray='2.03 0.9' transform='rotate(-90 20 20)'/%3E%3Ctext x='20' y='20.5' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-weight='800' font-size='12' fill='%23ededf0'%3E30%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ProjectP",
+    "alternateName": "30 jours, 30 projets",
+    "url": "https://projectp.fr/",
+    "inLanguage": "fr",
+    "description": "ProjectP, le défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.",
+    "author": {
+      "@type": "Person",
+      "name": "PierreWZK",
+      "url": "https://github.com/PierreWZK"
+    }
+  }
+  </script>
 </head>
 <body>
   <header class="nav container">
@@ -56,7 +73,7 @@
       <div class="glow glow-1"></div>
       <div class="glow glow-2"></div>
 
-      <p class="eyebrow">Le défi</p>
+      <p class="eyebrow">ProjectP · le défi</p>
       <!-- Le texte complet est dans aria-label : les lecteurs d'écran ne lisent pas l'animation -->
       <h1 aria-label="30 jours. 30 projets.">
         <span class="line" aria-hidden="true"><span id="type-1"></span></span>
@@ -87,12 +104,28 @@
   </main>
 
   <footer class="footer container">
-    <span>30 Days, 30 Projects</span>
+    <span>ProjectP · 30 jours, 30 projets</span>
     <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">github.com/PierreWZK/30DaysProjects</a>
   </footer>
 
   <script src="projects.js"></script>
   <script>
+    // Données structurées : la liste des projets terminés, tirée de projects.js (lue par les moteurs de recherche)
+    const itemList = document.createElement('script');
+    itemList.type = 'application/ld+json';
+    itemList.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Les projets du défi ProjectP',
+      itemListElement: PROJECTS.filter(p => p.status === 'done' && p.url).map(p => ({
+        '@type': 'ListItem',
+        position: p.day,
+        url: p.url,
+        name: `${p.name} · ${p.title}`,
+      })),
+    });
+    document.head.append(itemList);
+
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Familles de technos pour les filtres, avec leur couleur
