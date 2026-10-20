@@ -27,7 +27,6 @@ body {
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: clip; /* les halos du fond ne créent pas de défilement horizontal */
 }
 
 h1, h2, h3 {
@@ -48,6 +47,12 @@ a {
 }
 
 /* ---------- Halos lumineux du fond ---------- */
+
+/* Coupe les halos qui dépassent sur les côtés. Sur <body>, overflow est reporté sur la fenêtre,
+   qui reste défilable au doigt sur mobile : on le pose donc sur <main>. */
+main {
+  overflow-x: clip;
+}
 
 .glow {
   position: absolute;
