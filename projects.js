@@ -94,7 +94,7 @@ const PROJECTS = [
     repo: 'https://github.com/PierreWZK/Pecule',
     description: "Où part l'argent, mois par mois et catégorie par catégorie : graphiques, budgets avec alerte au dépassement, comparaison au mois précédent. Compte personnel, données synchronisées.",
   },
-  { day: 8, folder: 'day-08-url-shortener', title: 'Raccourcisseur d\'URL avec statistiques', stack: ['Laravel'] },
+  { day: 8, folder: 'day-08-fuel-detour', title: 'Le plein moins cher, détour compris', stack: ['Laravel', 'Leaflet', 'Open data'] },
   { day: 9, folder: 'day-09-car-comparator', title: 'Comparateur de voitures', stack: ['Symfony'] },
   { day: 10, folder: 'day-10-poker-odds', title: 'Calculateur de pot odds et d\'outs poker', stack: ['JavaScript'] },
   { day: 11, folder: 'day-11-game-collection-api', title: 'API REST de collection de jeux', stack: ['Symfony', 'API Platform'] },

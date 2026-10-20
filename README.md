@@ -21,7 +21,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 05 | **Kairos** · Réservation de créneaux | Symfony · EasyAdmin · MySQL | ✅ | [🔗](https://kairos.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Kairos) |
 | 06 | **Sursaut** · Jeu de réflexes | JavaScript · CSS · Web Audio | ✅ | [🔗](https://sursaut.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Sursaut) |
 | 07 | **Pécule** · Dashboard de dépenses | React · Recharts · PocketBase | ✅ | [🔗](https://pecule.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Pecule) |
-| 08 | Raccourcisseur d'URL avec statistiques | Laravel | ⏳ | — | — |
+| 08 | Le plein moins cher, détour compris | Laravel · Leaflet · Open data | 🚧 | — | — |
 | 09 | Comparateur de voitures | Symfony | ⏳ | — | — |
 | 10 | Calculateur de pot odds et d'outs poker | JavaScript | ⏳ | — | — |
 | 11 | API REST de collection de jeux | Symfony · API Platform | ⏳ | — | — |
