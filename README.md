@@ -22,7 +22,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 06 | **Sursaut** · Jeu de réflexes | JavaScript · CSS · Web Audio | ✅ | [🔗](https://sursaut.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Sursaut) |
 | 07 | **Pécule** · Dashboard de dépenses | React · Recharts · PocketBase | ✅ | [🔗](https://pecule.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Pecule) |
 | 08 | **Détour** · Le plein moins cher, détour compris | Laravel · Leaflet · Open data | ✅ | [🔗](https://detour.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Detour) |
-| 09 | Comparateur de voitures | Symfony | ⏳ | — | — |
+| 09 | **Vis-à-vis** · Comparateur de voitures | Symfony · EasyAdmin · Open data | ✅ | [🔗](https://visavis.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Visavis) |
 | 10 | Calculateur de pot odds et d'outs poker | JavaScript | ⏳ | — | — |
 | 11 | API REST de collection de jeux | Symfony · API Platform | ⏳ | — | — |
 | 12 | Compresseur d'images côté navigateur | JavaScript | ⏳ | — | — |
