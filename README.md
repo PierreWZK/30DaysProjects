@@ -24,7 +24,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 08 | **Détour** · Le plein moins cher, détour compris | Laravel · Leaflet · Open data | ✅ | [🔗](https://detour.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Detour) |
 | 09 | **Vis-à-vis** · Comparateur de voitures | Symfony · EasyAdmin · Open data | ✅ | [🔗](https://visavis.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Visavis) |
 | 10 | **Tirage** · Outs et cotes du pot au poker | React · Vite · JavaScript | ✅ | [🔗](https://tirage.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Tirage) |
-| 11 | API REST de collection de jeux | Symfony · API Platform | ⏳ | — | — |
+| 11 | **Ludex** · Ludothèque en API | Symfony · API Platform · Steam | ✅ | [🔗](https://ludex.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Ludex) |
 | 12 | Compresseur d'images côté navigateur | JavaScript | ⏳ | — | — |
 | 13 | Analyseur de fichiers CSV | React | ⏳ | — | — |
 | 14 | Générateur de factures PDF | Laravel · DomPDF | ⏳ | — | — |
