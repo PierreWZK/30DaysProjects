@@ -169,7 +169,9 @@
 
     // Page laissée ouverte : on la recharge à minuit pour passer au jour suivant
     const now = new Date();
-    setTimeout(() => location.reload(), midnight(now).getTime() + DAY_MS - now.getTime() + 1000);
+    // Minuit suivant par le calendrier, pas +24 h : un jour de changement d'heure dure 23 ou 25 h
+    const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    setTimeout(() => location.reload(), nextMidnight - now + 1000);
 
     const isOpen = p => p.status !== 'todo'; // projet commencé ou terminé
     const hasLink = p => isOpen(p) && Boolean(p.url); // carte cliquable : seulement avec une adresse en ligne
