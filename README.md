@@ -25,7 +25,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 09 | **Vis-à-vis** · Comparateur de voitures | Symfony · EasyAdmin · Open data | ✅ | [🔗](https://visavis.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Visavis) |
 | 10 | **Tirage** · Outs et cotes du pot au poker | React · Vite · JavaScript | ✅ | [🔗](https://tirage.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Tirage) |
 | 11 | **Ludex** · Ludothèque en API | Symfony · API Platform · Steam | ✅ | [🔗](https://ludex.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Ludex) |
-| 12 | Compresseur d'images côté navigateur | JavaScript | ⏳ | — | — |
+| 12 | **Plume** · Compresseur d'images côté navigateur | JavaScript · Canvas · Web Workers | ✅ | [🔗](https://plume.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Plume) |
 | 13 | Analyseur de fichiers CSV | React | ⏳ | — | — |
 | 14 | Générateur de factures PDF | Laravel · DomPDF | ⏳ | — | — |
 | 15 | Mini-jeu de course infinie | JavaScript · Canvas | ⏳ | — | — |
