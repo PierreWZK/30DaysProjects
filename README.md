@@ -27,7 +27,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 11 | **Ludex** · Ludothèque en API | Symfony · API Platform · Steam | ✅ | [🔗](https://ludex.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Ludex) |
 | 12 | **Plume** · Compresseur d'images côté navigateur | JavaScript · Canvas · Web Workers | ✅ | [🔗](https://plume.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Plume) |
 | 13 | **Radar** · Surveillance PageSpeed des sites | Laravel · PageSpeed API · Chart.js | ✅ | [🔗](https://radar.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Radar) |
-| 14 | Générateur de factures PDF | Laravel · DomPDF | ⏳ | — | — |
+| 14 | **Craftly** · La charte graphique d'un client | Next.js · TypeScript · Tailwind CSS | ✅ | [🔗](https://craftly.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Craftly) |
 | 15 | Mini-jeu de course infinie | JavaScript · Canvas | ⏳ | — | — |
 | 16 | Agrégateur d'actualités dev et gaming | Next.js | ⏳ | — | — |
 | 17 | Gestionnaire de tournois de poker | Symfony | ⏳ | — | — |
