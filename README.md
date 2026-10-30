@@ -30,7 +30,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 14 | **Craftly** · La charte graphique d'un client | Next.js · TypeScript · Tailwind CSS | ✅ | [🔗](https://craftly.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Craftly) |
 | 15 | **Fugue** · Course infinie sur un rythme de funk | JavaScript · Canvas · Web Audio | ✅ | [🔗](https://fugue.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Fugue) |
 | 16 | **Dépêche** · Agrégateur d'actualités dev et gaming | Next.js · TypeScript | ✅ | [🔗](https://depeche.projectp.fr/) | [GitHub](https://github.com/PierreWZK/depeche) |
-| 17 | Gestionnaire de tournois de poker | Symfony | ⏳ | — | — |
+| 17 | **BinkTime** · Gestionnaire de tournois de poker | Symfony · Twig · MySQL | ✅ | [🔗](https://binktime.projectp.fr/) | [GitHub](https://github.com/PierreWZK/binktime) |
 | 18 | Kanban avec glisser-déposer | React · dnd-kit | ⏳ | — | — |
 | 19 | Tracker de succès gaming | Laravel · Livewire | ⏳ | — | — |
 | 20 | Catalogue de jeux vidéo | Angular | ⏳ | — | — |
