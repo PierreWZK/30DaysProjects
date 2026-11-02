@@ -32,7 +32,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 16 | **Dépêche** · Agrégateur d'actualités dev et gaming | Next.js · TypeScript | ✅ | [🔗](https://depeche.projectp.fr/) | [GitHub](https://github.com/PierreWZK/depeche) |
 | 17 | **BinkTime** · Gestionnaire de tournois de poker | Symfony · Twig · MySQL | ✅ | [🔗](https://binktime.projectp.fr/) | [GitHub](https://github.com/PierreWZK/binktime) |
 | 18 | **Rituel** · Annuaire de jeux du jour entre amis | Next.js · TypeScript · PostgreSQL | ✅ | [🔗](https://rituel.projectp.fr/) | [GitHub](https://github.com/PierreWZK/rituel) |
-| 19 | Tracker de succès gaming | Laravel · Livewire | ⏳ | — | — |
+| 19 | **Bolduc** · Listes de cadeaux à partager | Laravel · Livewire · MySQL | ✅ | [🔗](https://bolduc.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Bolduc) |
 | 20 | Catalogue de jeux vidéo | Angular | ⏳ | — | — |
 | 21 | Visualiseur de données automobiles | JavaScript · Chart.js | ⏳ | — | — |
 | 22 | Watchlist films et séries | Symfony | ⏳ | — | — |
