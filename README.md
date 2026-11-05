@@ -35,7 +35,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 19 | **Bolduc** · Listes de cadeaux à partager | Laravel · Livewire · MySQL | ✅ | [🔗](https://bolduc.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Bolduc) |
 | 20 | **Cartouche** · La ludothèque qui se feuillette | Angular · Express · PostgreSQL | ✅ | [🔗](https://cartouche.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Cartouche) |
 | 21 | **Voyant** · Ton contrôle technique en 3D | Three.js · Gemini · Node.js | ✅ | [🔗](https://voyant.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Voyant) |
-| 22 | Watchlist films et séries | Symfony | ⏳ | — | — |
+| 22 | **The Last Human** · L'incremental game de la fin du travail | Next.js · TypeScript · PostgreSQL | ✅ | [🔗](https://thelasthuman.projectp.fr/) | [GitHub](https://github.com/PierreWZK/the-last-human) |
 | 23 | Comparaison de fichiers texte | JavaScript | ⏳ | — | — |
 | 24 | API de statistiques de jeux vidéo | Java · Spring Boot | ⏳ | — | — |
 | 25 | Puissance 4 avec IA | JavaScript · Canvas | ⏳ | — | — |
