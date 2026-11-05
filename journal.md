@@ -9,6 +9,8 @@
 - **J8** : Mise en place de fichiers d'indexation pour chaque projet (pas encore vérifié, car ça prend du temps).
 - **J9** : Ajout de nombreux skills Claude pour limiter l'utilisation de tokens, avoir de meilleurs prompts et de meilleurs résultats sur les sites.
 - **J11** : Création de prompts pour aider l'IA à la compréhension du projet et au chemin qu'il faut prendre.
+- **J20** : Journée peu productive, complexe. L'idée est présente, mais les clés API ont mis du temps à arriver et Claude ne comprenait pas exactement ce que je voulais. J'ai dû faire beaucoup d'allers-retours.
+- **J21** : Test d'utilisation de la 3D et d'une IA intégrée au projet.
 
 ## Projets à retravailler
 

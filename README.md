@@ -33,8 +33,8 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 17 | **BinkTime** · Gestionnaire de tournois de poker | Symfony · Twig · MySQL | ✅ | [🔗](https://binktime.projectp.fr/) | [GitHub](https://github.com/PierreWZK/binktime) |
 | 18 | **Rituel** · Annuaire de jeux du jour entre amis | Next.js · TypeScript · PostgreSQL | ✅ | [🔗](https://rituel.projectp.fr/) | [GitHub](https://github.com/PierreWZK/rituel) |
 | 19 | **Bolduc** · Listes de cadeaux à partager | Laravel · Livewire · MySQL | ✅ | [🔗](https://bolduc.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Bolduc) |
-| 20 | Catalogue de jeux vidéo | Angular | ⏳ | — | — |
-| 21 | Visualiseur de données automobiles | JavaScript · Chart.js | ⏳ | — | — |
+| 20 | **Cartouche** · La ludothèque qui se feuillette | Angular · Express · PostgreSQL | ✅ | [🔗](https://cartouche.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Cartouche) |
+| 21 | **Voyant** · Ton contrôle technique en 3D | Three.js · Gemini · Node.js | ✅ | [🔗](https://voyant.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Voyant) |
 | 22 | Watchlist films et séries | Symfony | ⏳ | — | — |
 | 23 | Comparaison de fichiers texte | JavaScript | ⏳ | — | — |
 | 24 | API de statistiques de jeux vidéo | Java · Spring Boot | ⏳ | — | — |
