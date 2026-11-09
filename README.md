@@ -36,7 +36,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 20 | **Cartouche** · La ludothèque qui se feuillette | Angular · Express · PostgreSQL | ✅ | [🔗](https://cartouche.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Cartouche) |
 | 21 | **Voyant** · Ton contrôle technique en 3D | Three.js · Gemini · Node.js | ✅ | [🔗](https://voyant.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Voyant) |
 | 22 | **The Last Human** · L'incremental game de la fin du travail | Next.js · TypeScript · PostgreSQL | ✅ | [🔗](https://thelasthuman.projectp.fr/) | [GitHub](https://github.com/PierreWZK/the-last-human) |
-| 23 | Comparaison de fichiers texte | JavaScript | ⏳ | — | — |
+| 23 | **Anti-UX** · Le musée des erreurs d'interface | JavaScript · CSS | ✅ | [🔗](https://anti-ux.projectp.fr/) | [GitHub](https://github.com/PierreWZK/day-23-anti-ux) |
 | 24 | **Dactyle** · Le jeu de rapidité de frappe | TypeScript · Vite · PostgreSQL | ✅ | [🔗](https://dactyle.projectp.fr/) | [GitHub](https://github.com/PierreWZK/day-24) |
 | 25 | Puissance 4 avec IA | JavaScript · Canvas | ⏳ | — | — |
 | 26 | Gestion de garage | Laravel · Filament | ⏳ | — | — |
