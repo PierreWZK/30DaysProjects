@@ -39,7 +39,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 23 | **Anti-UX** · Le musée des erreurs d'interface | JavaScript · CSS | ✅ | [🔗](https://anti-ux.projectp.fr/) | [GitHub](https://github.com/PierreWZK/day-23-anti-ux) |
 | 24 | **Dactyle** · Le jeu de rapidité de frappe | TypeScript · Vite · PostgreSQL | ✅ | [🔗](https://dactyle.projectp.fr/) | [GitHub](https://github.com/PierreWZK/day-24) |
 | 25 | **Carreau** · Le défi CSS du jour | Next.js · TypeScript · CodeMirror | ✅ | [🔗](https://carreau.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Carreau) |
-| 26 | Gestion de garage | Laravel · Filament | ⏳ | — | — |
+| 26 | **Drop** · La boutique d'un produit par jour | Laravel · MySQL · Stripe | ✅ | [🔗](https://drop.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Drop) |
 | 27 | Recherche plein texte de films | Symfony · Meilisearch | ⏳ | — | — |
 | 28 | Statistiques GitHub | Next.js | ⏳ | — | — |
 | 29 | Chat en temps réel | Laravel · Reverb | ⏳ | — | — |
