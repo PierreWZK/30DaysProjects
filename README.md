@@ -41,8 +41,8 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 25 | **Carreau** · Le défi CSS du jour | Next.js · TypeScript · CodeMirror | ✅ | [🔗](https://carreau.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Carreau) |
 | 26 | **Drop** · La boutique d'un produit par jour | Laravel · MySQL · Stripe | ✅ | [🔗](https://drop.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Drop) |
 | 27 | **Tournée** · Tous les bars de la ville, un seul trajet | TypeScript · Vite · Leaflet | ✅ | [🔗](https://tournee.projectp.fr/) | [GitHub](https://github.com/PierreWZK/tournee) |
-| 28 | Statistiques GitHub | Next.js | ⏳ | — | — |
-| 29 | Chat en temps réel | Laravel · Reverb | ⏳ | — | — |
+| 28 | **Iron Legacy** · Le jeu de combat 3D dans le navigateur | TypeScript · React Three Fiber · Colyseus | ✅ | [🔗](https://iron.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Iron-Legacy) |
+| 29 | **LayR** · Le bon design n'est jamais un hasard | Next.js · PostgreSQL · Gemini | ✅ | [🔗](https://layr.projectp.fr/) | [GitHub](https://github.com/PierreWZK/layr) |
 | 30 | Portfolio des 30 projets | Next.js | ⏳ | — | — |
 
 Légende : ⏳ à venir · 🚧 en cours · ✅ terminé · « — » : pas encore en ligne ou pas encore de dépôt
