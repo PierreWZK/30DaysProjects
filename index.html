@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ProjectP · 30 jours, 30 projets codés avec Claude</title>
   <meta name="description" content="ProjectP, le défi 30 jours, 30 projets : un outil ou un site codé chaque jour en 2 à 3 heures avec l'aide de Claude, en JavaScript, React, Next.js, Laravel et Symfony.">
-  <meta name="theme-color" content="#0e0e11">
+  <meta name="theme-color" content="#0f0f0e">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:site_name" content="ProjectP">
@@ -18,10 +18,10 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ProjectP · aperçu du site">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230e0e11'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff6b6b'/%3E%3Cstop offset='.35' stop-color='%23ffb23d'/%3E%3Cstop offset='.6' stop-color='%236bcb77'/%3E%3Cstop offset='.8' stop-color='%234d96ff'/%3E%3Cstop offset='1' stop-color='%23b06bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='url(%23g)' stroke-width='3.5' stroke-dasharray='2.03 0.9' transform='rotate(-90 20 20)'/%3E%3Ctext x='20' y='20.5' text-anchor='middle' dominant-baseline='central' font-family='system-ui,sans-serif' font-weight='800' font-size='12' fill='%23ededf0'%3E30%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%230f0f0e'/%3E%3Ctext x='20' y='21' text-anchor='middle' dominant-baseline='central' font-family='Arial Narrow,Arial,sans-serif' font-weight='800' font-size='24' fill='%23f3f0e8'%3EP%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script type="application/ld+json">
   {
@@ -41,344 +41,378 @@
   </script>
 </head>
 <body>
-  <header class="nav container">
-    <a href="./" class="logo" aria-label="30 Days, 30 Projects, accueil">
-      <!-- Logo : un anneau de 30 segments (un par jour) autour du chiffre 30 -->
-      <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true">
-        <defs>
-          <linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#ff6b6b" />
-            <stop offset="0.35" stop-color="#ffb23d" />
-            <stop offset="0.6" stop-color="#6bcb77" />
-            <stop offset="0.8" stop-color="#4d96ff" />
-            <stop offset="1" stop-color="#b06bff" />
-          </linearGradient>
-        </defs>
-        <g class="logo-ring">
-          <!-- Circonférence 2π×17 ≈ 106.8, divisée en 30 segments de 3.56 -->
-          <circle cx="20" cy="20" r="17" fill="none" stroke="url(#logo-gradient)" stroke-width="4"
-                  stroke-dasharray="2.46 1.1" transform="rotate(-90 20 20)" />
-        </g>
-        <text x="20" y="20.5" text-anchor="middle" dominant-baseline="central"
-              font-family="Bricolage Grotesque, system-ui, sans-serif" font-weight="800" font-size="13"
-              fill="currentColor">30</text>
-      </svg>
-      <span class="logo-text">30 Days <small>30 Projects</small></span>
+  <a class="skip" href="#mur">Aller aux projets</a>
+
+  <header class="top container">
+    <a href="./" class="brand" aria-label="ProjectP, accueil">
+      <svg class="gauge" viewBox="0 0 200 200" aria-hidden="true"><g id="gauge-small"></g><text x="100" y="104" text-anchor="middle" dominant-baseline="central" class="gauge-p">P</text></svg>
+      <span class="brand-name">ProjectP</span>
     </a>
-    <a href="https://github.com/PierreWZK/30DaysProjects" class="nav-link" target="_blank" rel="noopener">Code source ↗</a>
+    <nav class="top-nav" aria-label="Principal">
+      <a href="#mur">Projets</a>
+      <a href="#defi">Le défi</a>
+      <a href="#technos">Technos</a>
+      <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">Code ↗</a>
+    </nav>
   </header>
 
   <main>
-    <section class="hero container">
-      <div class="glow glow-1"></div>
-      <div class="glow glow-2"></div>
-
-      <p class="eyebrow">ProjectP · le défi</p>
-      <!-- Le texte complet est dans aria-label : les lecteurs d'écran ne lisent pas l'animation -->
-      <h1 aria-label="30 jours. 30 projets.">
-        <span class="line" aria-hidden="true"><span id="type-1"></span></span>
-        <span class="line" aria-hidden="true"><span id="type-2" class="rainbow"></span></span>
-      </h1>
-      <p class="lead">
-        Un outil ou un site codé chaque jour en 2 à 3 heures, avec l'aide de Claude.
-        Au programme : JavaScript, React, Next.js, Laravel, Symfony et quelques autres technos.
-        Le défi se termine par un portfolio en Next.js qui présente les 30 projets.
-      </p>
-
-      <div class="progress">
-        <div class="progress-head">
-          <span class="progress-count"><span id="done-count">0</span> <small>/ 30 projets livrés</small></span>
-          <span id="progress-stats" class="progress-stats"></span>
+    <section id="mur" class="hero" aria-labelledby="hero-titre">
+      <div class="container hero-head">
+        <h1 id="hero-titre" class="hero-title">30 jours.<br>30 projets.</h1>
+        <div class="hero-side">
+          <p class="hero-kicker" id="hero-kicker"></p>
+          <p class="hero-lead">Un outil ou un site codé chaque jour en 2 à 3 heures, avec Claude. Les 30 défilent ci-dessous : attrape une ligne et lance-la, clique une capture pour sa fiche.</p>
+          <div class="hero-actions">
+            <a class="btn btn-main" href="#defi">Le défi en bref</a>
+            <a class="btn btn-ghost" href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">Le code source ↗</a>
+          </div>
         </div>
-        <nav id="calendar" class="calendar" aria-label="Progression jour par jour"></nav>
+      </div>
+
+      <div class="wall-clip">
+        <div class="wall">
+          <div class="lane" data-from="0" data-to="10" data-dir="-1" data-speed="0.03" tabindex="0" role="region" aria-label="Ligne 1 : jours 1 à 10"><div class="track"></div></div>
+          <div class="lane lane-names" data-from="0" data-to="30" data-dir="1" data-speed="0.045" data-names tabindex="0" role="region" aria-label="Les 30 noms"><div class="track"></div></div>
+          <div class="lane" data-from="10" data-to="20" data-dir="1" data-speed="0.024" tabindex="0" role="region" aria-label="Ligne 2 : jours 11 à 20"><div class="track"></div></div>
+          <div class="lane" data-from="20" data-to="30" data-dir="-1" data-speed="0.034" tabindex="0" role="region" aria-label="Ligne 3 : jours 21 à 30"><div class="track"></div></div>
+        </div>
+      </div>
+
+      <div class="container wall-tools">
+        <p class="wall-hint">Glisser à la souris ou au doigt, molette horizontale, flèches du clavier sur une ligne.</p>
+        <div id="filters" class="filters" role="group" aria-label="Filtrer par techno"></div>
+        <button id="pause" class="pause" type="button" aria-pressed="false">Pause du défilement</button>
       </div>
     </section>
 
-    <section id="projets" class="projects container">
-      <div class="projects-head">
-        <h2>Les projets</h2>
-        <div id="filters" class="filters" role="group" aria-label="Filtrer par techno"></div>
+    <section class="container numbers" aria-labelledby="chiffres-titre">
+      <h2 id="chiffres-titre" class="h2">En chiffres</h2>
+      <dl class="stats">
+        <div><dt>Projets en ligne</dt><dd id="stat-done">0</dd></div>
+        <div><dt>Technos utilisées</dt><dd id="stat-techs">0</dd></div>
+        <div><dt>Par projet</dt><dd>2 à 3 h</dd></div>
+      </dl>
+    </section>
+
+    <section id="defi" class="container split" aria-labelledby="defi-titre">
+      <div>
+        <h2 id="defi-titre" class="h2">Le défi</h2>
+        <p class="lead">Chaque jour, une idée est codée et mise en ligne le soir même. Pas de mise au propre le lendemain : ce qui est livré est ce qui est visible.</p>
       </div>
-      <div id="grid" class="grid"></div>
+      <ol class="rules">
+        <li><strong>Un projet par jour.</strong> Un outil ou un site, en 2 à 3 heures, avec Claude comme binôme.</li>
+        <li><strong>Une adresse en ligne.</strong> Chaque projet a son site et son propre dépôt GitHub.</li>
+        <li><strong>Un état qui se calcule.</strong> Terminé, en cours, en retard ou à venir : la date suffit, rien n'est saisi à la main.</li>
+      </ol>
+    </section>
+
+    <section id="technos" class="container" aria-labelledby="technos-titre">
+      <h2 id="technos-titre" class="h2">Les technos</h2>
+      <p class="lead narrow">Ce qui a été utilisé jusqu'ici, par nombre de projets.</p>
+      <ul id="tech-list" class="tech-list"></ul>
     </section>
   </main>
 
   <footer class="footer container">
-    <span>ProjectP · 30 jours, 30 projets</span>
-    <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">github.com/PierreWZK/30DaysProjects</a>
+    <p class="footer-mark">ProjectP</p>
+    <p class="footer-meta">
+      30 jours, 30 projets ·
+      <a href="https://github.com/PierreWZK/30DaysProjects" target="_blank" rel="noopener">github.com/PierreWZK/30DaysProjects</a>
+    </p>
   </footer>
+
+  <dialog id="fiche" aria-labelledby="fiche-titre">
+    <div class="sheet" id="fiche-body"></div>
+    <form method="dialog" class="sheet-close-form">
+      <button class="sheet-close" value="close" aria-label="Fermer la fiche">×</button>
+    </form>
+  </dialog>
 
   <script src="projects.js"></script>
   <script>
-    // Données structurées : la liste des projets terminés, tirée de projects.js (lue par les moteurs de recherche)
-    const itemList = document.createElement('script');
-    itemList.type = 'application/ld+json';
-    itemList.textContent = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: 'Les projets du défi ProjectP',
-      itemListElement: PROJECTS.filter(p => p.status === 'done' && p.url).map(p => ({
-        '@type': 'ListItem',
-        position: p.day,
-        url: p.url,
-        name: `${p.name} · ${p.title}`,
-      })),
-    });
-    document.head.append(itemList);
-
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Familles de technos pour les filtres, avec leur couleur
-    const CATEGORIES = {
-      'JavaScript': '#f7df1e',
-      'React': '#61dafb',
-      'Next.js': '#ededf0',
-      'Laravel': '#ff5a4f',
-      'Symfony': '#a78bfa',
-      'Autres': '#34d399',
-    };
-
-    // La famille d'un projet = sa première techno (Angular, Java… vont dans « Autres »)
-    const categoryOf = p => (CATEGORIES[p.stack[0]] ? p.stack[0] : 'Autres');
-
-    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours de développement', late: 'En retard', todo: 'À venir' };
     const DAY_MS = 24 * 60 * 60 * 1000;
     const pad = n => String(n).padStart(2, '0');
-
-    // ---------- Statut automatique ----------
-
-    // Minuit (heure locale) d'une date
-    const midnight = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-    // Jour du défi aujourd'hui : 1 le jour de CHALLENGE_START, 0 ou moins avant le début
-    function challengeDay(now = new Date()) {
-      const [y, m, d] = CHALLENGE_START.split('-').map(Number);
-      // Math.round absorbe l'heure gagnée ou perdue aux changements d'heure
-      return Math.round((midnight(now) - new Date(y, m - 1, d)) / DAY_MS) + 1;
-    }
-
-    // Seul « done » est saisi à la main dans projects.js, le reste dépend de la date
-    function statusOf(p, today) {
-      if (p.status === 'done') return 'done';
-      if (p.day === today) return 'progress';
-      return p.day < today ? 'late' : 'todo';
-    }
-
-    const today = challengeDay();
-    PROJECTS.forEach(p => (p.status = statusOf(p, today)));
-
-    // Page laissée ouverte : on la recharge à minuit pour passer au jour suivant
-    const now = new Date();
-    // Minuit suivant par le calendrier, pas +24 h : un jour de changement d'heure dure 23 ou 25 h
-    const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    setTimeout(() => location.reload(), nextMidnight - now + 1000);
-
-    const isOpen = p => p.status !== 'todo'; // projet commencé ou terminé
-    const hasLink = p => isOpen(p) && Boolean(p.url); // carte cliquable : seulement avec une adresse en ligne
-    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-
-    // Échappe le texte avant de l'insérer dans le HTML
     const esc = text => String(text).replace(/[&<>"']/g, c => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
     }[c]));
 
-    let activeFilter = 'Tous';
+    // ---------- Statut automatique ----------
 
-    // ---------- Titre en machine à écrire ----------
+    const midnight = date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-    // Écrit « 30 jours. » puis « 30 projets. », laisse le temps de lire,
-    // efface, et recommence.
-    async function typewriter() {
-      const lines = [
-        { el: document.getElementById('type-1'), text: '30 jours.' },
-        { el: document.getElementById('type-2'), text: '30 projets.' },
-      ];
-
-      if (reducedMotion) {
-        lines.forEach(l => (l.el.textContent = l.text));
-        return;
-      }
-
-      const caret = document.createElement('span');
-      caret.className = 'caret';
-
-      // Le curseur suit la ligne en cours d'écriture
-      const moveCaret = line => line.el.parentNode.appendChild(caret);
-
-      while (true) {
-        caret.classList.add('is-typing');
-        for (const line of lines) {
-          moveCaret(line);
-          for (const char of line.text) {
-            line.el.textContent += char;
-            await sleep(70 + Math.random() * 60); // rythme irrégulier, plus naturel
-          }
-          await sleep(350);
-        }
-
-        caret.classList.remove('is-typing');
-        await sleep(4500); // le temps de lire
-
-        caret.classList.add('is-typing');
-        for (const line of [...lines].reverse()) {
-          moveCaret(line);
-          while (line.el.textContent) {
-            line.el.textContent = line.el.textContent.slice(0, -1);
-            await sleep(35);
-          }
-        }
-
-        caret.classList.remove('is-typing');
-        await sleep(700);
-      }
+    // Jour du défi aujourd'hui : 1 le jour de CHALLENGE_START
+    function challengeDay(now = new Date()) {
+      const [y, m, d] = CHALLENGE_START.split('-').map(Number);
+      return Math.round((midnight(now) - new Date(y, m - 1, d)) / DAY_MS) + 1;
     }
 
-    // ---------- Progression ----------
+    const today = challengeDay();
+    const STATUS_LABELS = { done: 'Terminé', progress: 'En cours de développement', late: 'En retard', todo: 'À venir' };
+    const stateOf = p => {
+      if (p.status === 'done') return 'done';
+      if (p.day === today) return 'progress';
+      return p.day < today ? 'late' : 'todo';
+    };
+    PROJECTS.forEach(p => { p.state = stateOf(p); p.label = p.name || p.title; });
 
-    // Fait défiler un nombre de 0 jusqu'à sa valeur
-    function countUp(el, target) {
-      if (reducedMotion || target === 0) {
-        el.textContent = target;
-        return;
-      }
-      const start = performance.now();
-      const duration = 900;
-      (function frame(now) {
-        const t = Math.min((now - start) / duration, 1);
-        el.textContent = Math.round(target * (1 - (1 - t) ** 3));
-        if (t < 1) requestAnimationFrame(frame);
-      })(start);
-    }
+    // Page laissée ouverte : on la recharge à minuit
+    const now = new Date();
+    setTimeout(() => location.reload(), new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now + 1000);
 
-    function renderProgress() {
-      const count = status => PROJECTS.filter(p => p.status === status).length;
-      const done = count('done');
-      const late = count('late');
-      const stacks = new Set(PROJECTS.filter(p => p.status === 'done' || p.status === 'progress').flatMap(p => p.stack));
+    // Famille d'un projet = sa première techno (les autres vont dans « Autres »)
+    const FAMILIES = ['JavaScript', 'React', 'Next.js', 'Laravel', 'Symfony'];
+    const familyOf = p => (FAMILIES.includes(p.stack[0]) ? p.stack[0] : 'Autres');
 
-      countUp(document.getElementById('done-count'), done);
-      document.getElementById('progress-stats').innerHTML = [
-        `${stacks.size} techno${stacks.size > 1 ? 's' : ''} utilisée${stacks.size > 1 ? 's' : ''}`,
-        late ? `<span class="is-late">${late} en retard</span>` : '',
-        `${30 - done - late} à venir`,
-      ].filter(Boolean).join(' · ');
+    const done = PROJECTS.filter(p => p.state === 'done');
+    const late = PROJECTS.filter(p => p.state === 'late');
+    const todo = PROJECTS.filter(p => p.state === 'todo');
 
-      document.getElementById('calendar').innerHTML = PROJECTS.map((p, i) => `
-        <a class="day is-${p.status}" href="#jour-${pad(p.day)}"${p.status === 'progress' ? ' aria-current="date"' : ''}
-           title="Jour ${pad(p.day)} · ${esc(p.name || p.title)} (${STATUS_LABELS[p.status]})"
-           style="--i: ${i}; background-position: ${((p.day - 1) / 29) * 100}% 0">${p.day}</a>
-      `).join('');
+    // ---------- Logo-jauge : un segment par jour ----------
 
-      // Un clic sur une case affiche tous les projets, pour que la carte soit visible
-      document.querySelectorAll('.day').forEach(el => el.addEventListener('click', () => {
-        if (activeFilter !== 'Tous') setFilter('Tous');
-      }));
-    }
+    const SEGMENTS = PROJECTS.map((p, i) =>
+      `<rect class="seg is-${p.state}" x="94" y="8" width="12" height="34" rx="3" transform="rotate(${i * 12} 100 100)"></rect>`
+    ).join('');
+    document.getElementById('gauge-small').innerHTML = SEGMENTS;
+
+    // ---------- Chiffres et intro ----------
+
+    document.getElementById('hero-kicker').textContent =
+      `${done.length} livrés · ${late.length} en retard · ${todo.length} à venir`;
+    document.getElementById('stat-done').textContent = done.length;
+    const techCounts = {};
+    done.forEach(p => p.stack.forEach(s => (techCounts[s] = (techCounts[s] || 0) + 1)));
+    document.getElementById('stat-techs').textContent = Object.keys(techCounts).length;
+    document.getElementById('tech-list').innerHTML = Object.entries(techCounts)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name, n]) => `<li class="tech"><span>${esc(name)}</span><span class="tech-n">${n}</span></li>`)
+      .join('');
 
     // ---------- Filtres ----------
 
-    function renderFilters() {
-      const counts = { Tous: PROJECTS.length };
-      PROJECTS.forEach(p => {
-        const c = categoryOf(p);
-        counts[c] = (counts[c] || 0) + 1;
-      });
-
-      document.getElementById('filters').innerHTML = ['Tous', ...Object.keys(CATEGORIES)]
-        .filter(name => counts[name])
-        .map(name => `
-          <button class="filter${name === activeFilter ? ' is-active' : ''}" data-filter="${name}">
-            ${name} <span class="filter-count">${counts[name]}</span>
-          </button>
-        `).join('');
-    }
+    let activeFilter = 'Tous';
+    const filterCounts = { Tous: PROJECTS.length };
+    PROJECTS.forEach(p => (filterCounts[familyOf(p)] = (filterCounts[familyOf(p)] || 0) + 1));
+    document.getElementById('filters').innerHTML = ['Tous', ...FAMILIES, 'Autres']
+      .filter(name => filterCounts[name])
+      .map(name => `<button class="filter${name === activeFilter ? ' is-on' : ''}" type="button" data-filter="${name}" aria-pressed="${name === activeFilter}">${name} <span>${filterCounts[name]}</span></button>`)
+      .join('');
 
     function setFilter(name) {
       activeFilter = name;
-      renderFilters();
-      renderGrid();
+      document.querySelectorAll('.filter').forEach(b => {
+        const on = b.dataset.filter === name;
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-pressed', on);
+      });
+      document.querySelectorAll('.card, .name').forEach(c => {
+        c.classList.toggle('dim', name !== 'Tous' && c.dataset.fam !== name);
+      });
     }
-
     document.getElementById('filters').addEventListener('click', e => {
-      const btn = e.target.closest('.filter');
-      if (btn) setFilter(btn.dataset.filter);
+      const b = e.target.closest('.filter');
+      if (b) setFilter(b.dataset.filter);
     });
 
     // ---------- Cartes ----------
 
-    function cardHtml(p) {
-      const accent = CATEGORIES[categoryOf(p)];
-      const tag = hasLink(p) ? 'a' : 'div';
-      const href = hasLink(p) ? ` href="${esc(p.url)}" target="_blank" rel="noopener"` : '';
+    const cardHtml = p => `
+      <button class="card is-${p.state}" type="button" data-day="${p.day}" data-fam="${familyOf(p)}"
+              aria-label="Jour ${pad(p.day)} · ${esc(p.label)}, ${STATUS_LABELS[p.state]}">
+        <span class="pic">
+          <span class="pic-num">${pad(p.day)}</span>
+          ${p.image ? `<img src="${esc(p.image)}" alt="" loading="lazy" decoding="async" draggable="false">` : ''}
+          <svg class="mark" viewBox="0 0 120 90" aria-hidden="true"><path pathLength="1" d="M14 46 C10 20 48 6 80 10 C112 14 120 42 104 62 C90 80 38 84 18 66 C6 54 10 32 34 22"></path></svg>
+        </span>
+        <span class="cap">
+          <span class="cap-day">${pad(p.day)}</span>
+          <span class="cap-name">${esc(p.label)}</span>
+        </span>
+        <span class="cap-title">${esc(p.title)}</span>
+      </button>`;
 
-      const preview = p.image
-        ? `<img src="${p.image}" alt="Aperçu de ${esc(p.name || p.title)}" loading="lazy"
-             onerror="this.replaceWith(Object.assign(document.createElement('div'), {className: 'preview-empty', innerHTML: '<span>${pad(p.day)}</span>'}))">`
-        : `<div class="preview-empty"><span>${pad(p.day)}</span></div>`;
+    // ---------- Lignes à défilement libre ----------
 
-      return `
-        <${tag} class="card reveal is-${p.status}" id="jour-${pad(p.day)}"${href} style="--accent: ${accent}">
-          <div class="preview">${preview}</div>
-          <div class="card-body">
-            <div class="card-meta">
-              <span>Jour ${pad(p.day)}</span>
-              <span class="status is-${p.status}">${STATUS_LABELS[p.status]}</span>
-            </div>
-            <h3>${esc(p.name || p.title)}</h3>
-            ${p.name ? `<p class="card-title">${esc(p.title)}</p>` : ''}
-            ${p.description ? `<p class="card-desc">${esc(p.description)}</p>` : ''}
-            <div class="card-footer">
-              <div class="tags">${p.stack.map(s => `<span class="tag">${esc(s)}</span>`).join('')}</div>
-              ${hasLink(p) ? '<span class="card-arrow">Voir →</span>' : ''}
-            </div>
-          </div>
-        </${tag}>
-      `;
-    }
+    // Ligne des noms : chaque nom ouvre aussi la fiche
+    const nameHtml = p => `
+      <button class="name is-${p.state}" type="button" data-day="${p.day}" data-fam="${familyOf(p)}"
+              aria-label="Jour ${pad(p.day)} · ${esc(p.label)}">${esc(p.label)}</button>`;
 
-    // Les cartes apparaissent en fondu quand elles entrent à l'écran
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const card = entry.target;
-        revealObserver.unobserve(card);
-        card.classList.add('is-visible');
-        // Une fois apparue, la carte retrouve ses transitions de survol normales
-        setTimeout(() => {
-          card.classList.remove('reveal', 'is-visible');
-          card.style.transitionDelay = '';
-        }, 900);
+    const lanes = [...document.querySelectorAll('.lane')].map(el => ({
+      el,
+      track: el.querySelector('.track'),
+      items: PROJECTS.slice(Number(el.dataset.from), Number(el.dataset.to)),
+      names: 'names' in el.dataset,
+      dir: Number(el.dataset.dir),     // sens de la dérive automatique
+      speed: Number(el.dataset.speed), // pixels par milliseconde
+      x: 0, v: 0, w: 0, drag: null,
+    }));
+
+    // Trois copies pour que la boucle n'ait pas de bord visible.
+    // Seule la première est lue par les lecteurs d'écran et atteinte au clavier.
+    lanes.forEach(L => {
+      const copy = L.items.map(L.names ? nameHtml : cardHtml).join('');
+      L.track.innerHTML = copy + copy + copy;
+      [...L.track.children].slice(L.items.length).forEach(c => {
+        c.setAttribute('aria-hidden', 'true');
+        c.tabIndex = -1;
       });
-    }, { threshold: 0.1 });
-
-    function renderGrid() {
-      const grid = document.getElementById('grid');
-      const list = PROJECTS.filter(p => activeFilter === 'Tous' || categoryOf(p) === activeFilter);
-
-      grid.innerHTML = list.length
-        ? list.map(cardHtml).join('')
-        : '<p class="empty">Aucun projet pour ce filtre.</p>';
-
-      grid.querySelectorAll('.card').forEach((card, i) => {
-        card.style.transitionDelay = `${(i % 3) * 80}ms`; // léger décalage par colonne
-        if (reducedMotion) card.classList.remove('reveal');
-        else revealObserver.observe(card);
-      });
-    }
-
-    // Halo qui suit la souris sur les cartes
-    document.getElementById('grid').addEventListener('pointermove', e => {
-      const card = e.target.closest('.card');
-      if (!card) return;
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
-      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
     });
 
-    typewriter();
-    renderProgress();
-    renderFilters();
-    renderGrid();
+    let drifting = !reducedMotion;
+    let suppressClick = false;
+
+    function measure() {
+      lanes.forEach(L => {
+        const kids = L.track.children;
+        if (kids.length > L.items.length) {
+          L.w = kids[L.items.length].offsetLeft - kids[0].offsetLeft;
+        }
+      });
+    }
+
+    // Garde la position dans une boucle : x reste entre -w et 0
+    function wrap(L) {
+      if (!L.w) return;
+      L.x = ((L.x % L.w) + L.w) % L.w - L.w;
+    }
+
+    lanes.forEach(L => {
+      // Glisser : la ligne suit le doigt ou la souris, et garde l'élan au lâcher
+      L.el.addEventListener('pointerdown', e => {
+        if (e.button !== 0) return;
+        suppressClick = false;
+        L.drag = { id: e.pointerId, lx: e.clientX, t: e.timeStamp, moved: 0, samples: [] };
+        L.v = 0;
+        L.el.classList.add('is-grabbing');
+
+        const move = ev => {
+          if (!L.drag || ev.pointerId !== L.drag.id) return;
+          const dx = ev.clientX - L.drag.lx;
+          L.drag.lx = ev.clientX;
+          L.drag.moved += Math.abs(dx);
+          L.x += dx;
+          const dt = Math.max(ev.timeStamp - L.drag.t, 1);
+          L.drag.t = ev.timeStamp;
+          L.drag.samples.push(dx / dt);
+          if (L.drag.samples.length > 5) L.drag.samples.shift();
+        };
+        const up = () => {
+          if (!L.drag) return;
+          const s = L.drag.samples;
+          const avg = s.length ? s.reduce((a, b) => a + b, 0) / s.length : 0;
+          L.v = Math.max(-2.5, Math.min(2.5, avg));
+          if (L.drag.moved > 6) suppressClick = true; // ce n'était pas un clic
+          L.drag = null;
+          L.el.classList.remove('is-grabbing');
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+          window.removeEventListener('pointercancel', up);
+        };
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+        window.addEventListener('pointercancel', up);
+      });
+
+      // Molette horizontale (trackpad) : la ligne suit, la verticale fait défiler la page
+      L.el.addEventListener('wheel', e => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+          e.preventDefault();
+          L.v = 0;
+          L.x -= e.deltaX;
+        }
+      }, { passive: false });
+
+      // Clavier : flèches gauche et droite donnent une impulsion
+      L.el.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') { L.v -= 1.2; e.preventDefault(); }
+        if (e.key === 'ArrowLeft') { L.v += 1.2; e.preventDefault(); }
+      });
+    });
+
+    // Un glissé ne doit pas ouvrir de fiche
+    document.addEventListener('click', e => {
+      if (!suppressClick) return;
+      suppressClick = false;
+      e.preventDefault();
+      e.stopPropagation();
+    }, true);
+
+    // Boucle d'animation : élan qui s'éteint, dérive lente, boucle
+    let last = performance.now();
+    function frame(t) {
+      const dt = Math.min(t - last, 64);
+      last = t;
+      lanes.forEach(L => {
+        if (!L.drag) {
+          if (Math.abs(L.v) > 0.005) {
+            L.x += L.v * dt;
+            L.v *= Math.pow(0.92, dt / 16);
+          } else {
+            L.v = 0;
+          }
+          if (drifting) L.x += L.dir * L.speed * dt;
+        }
+        wrap(L);
+        L.track.style.transform = `translate3d(${L.x.toFixed(2)}px, 0, 0)`;
+      });
+      requestAnimationFrame(frame);
+    }
+
+    // Pause du défilement automatique (le glissé reste possible)
+    const pauseBtn = document.getElementById('pause');
+    function setDrift(on) {
+      drifting = on;
+      pauseBtn.setAttribute('aria-pressed', !on);
+      pauseBtn.textContent = on ? 'Pause du défilement' : 'Reprendre le défilement';
+    }
+    pauseBtn.addEventListener('click', () => setDrift(!drifting));
+    if (reducedMotion) setDrift(false);
+
+    // ---------- Fiche projet ----------
+
+    const fiche = document.getElementById('fiche');
+    const ficheBody = document.getElementById('fiche-body');
+
+    function openFiche(p) {
+      const img = p.image
+        ? `<img class="sheet-img" src="${esc(p.image)}" alt="Aperçu de ${esc(p.label)}">`
+        : `<div class="sheet-img sheet-empty"><span>${pad(p.day)}</span></div>`;
+      const link = p.url && p.state !== 'todo'
+        ? `<a class="btn btn-main" href="${esc(p.url)}" target="_blank" rel="noopener">Voir le site ↗</a>`
+        : '';
+      const repo = p.repo
+        ? `<a class="btn btn-ghost" href="${esc(p.repo)}" target="_blank" rel="noopener">Le code ↗</a>`
+        : '';
+      ficheBody.innerHTML = `
+        ${img}
+        <div class="sheet-text">
+          <p class="sheet-meta"><span class="sheet-day is-${p.state}">Jour ${pad(p.day)}</span> · ${STATUS_LABELS[p.state]}</p>
+          <h2 id="fiche-titre" class="sheet-title">${esc(p.label)}</h2>
+          <p class="sheet-sub">${esc(p.title)}</p>
+          ${p.description ? `<p class="sheet-desc">${esc(p.description)}</p>` : ''}
+          <ul class="sheet-stack" aria-label="Technos">${p.stack.map(s => `<li>${esc(s)}</li>`).join('')}</ul>
+          <div class="sheet-actions">${link}${repo}</div>
+        </div>`;
+      fiche.showModal();
+    }
+
+    document.getElementById('mur').addEventListener('click', e => {
+      const card = e.target.closest('.card, .name');
+      if (!card) return;
+      openFiche(PROJECTS[Number(card.dataset.day) - 1]);
+    });
+    // Un clic sur le fond (hors de la feuille) ferme la fiche
+    fiche.addEventListener('click', e => { if (e.target === fiche) fiche.close(); });
+
+    // ---------- Démarrage ----------
+
+    setFilter(activeFilter);
+    const ro = new ResizeObserver(measure);
+    lanes.forEach(L => ro.observe(L.track));
+    measure();
+    requestAnimationFrame(() => { measure(); requestAnimationFrame(frame); });
   </script>
 </body>
 </html>

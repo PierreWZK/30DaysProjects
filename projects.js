@@ -358,5 +358,16 @@ const PROJECTS = [
     repo: 'https://github.com/PierreWZK/layr',
     description: "Une plateforme bilingue pour découvrir des sites au design remarquable : 71 sites réels avec capture, note sur 10, badges, style et palette. Recherche, filtres, 14 catégories d'inspiration, favoris et collections synchronisés avec un compte. Les sites proposés sont capturés par Playwright, analysés par Gemini, puis validés dans l'admin.",
   },
-  { day: 30, folder: 'day-30-portfolio', title: 'Portfolio des 30 projets', stack: ['Next.js'] },
+  {
+    day: 30,
+    folder: 'day-30-portfolio',
+    name: 'Portfolio',
+    title: 'Un portfolio en ASCII et un bureau 3D',
+    stack: ['Next.js', 'TypeScript', 'Three.js'],
+    status: 'done',
+    image: 'preview-days-images/day30_portfolio.png',
+    url: 'https://portfolio.projectp.fr/',
+    repo: 'https://github.com/PierreWZK/portfolio-2026',
+    description: 'Deux façons de le visiter : un mode classique en ASCII (paysage, portrait en caractères, thème clair ou sombre) et un bureau 3D low poly dont chaque objet ouvre une rubrique.',
+  },
 ];
