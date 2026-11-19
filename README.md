@@ -43,7 +43,7 @@ Chaque projet a **son propre dépôt GitHub** et sa propre adresse en ligne : vo
 | 27 | **Tournée** · Tous les bars de la ville, un seul trajet | TypeScript · Vite · Leaflet | ✅ | [🔗](https://tournee.projectp.fr/) | [GitHub](https://github.com/PierreWZK/tournee) |
 | 28 | **Iron Legacy** · Le jeu de combat 3D dans le navigateur | TypeScript · React Three Fiber · Colyseus | ✅ | [🔗](https://iron.projectp.fr/) | [GitHub](https://github.com/PierreWZK/Iron-Legacy) |
 | 29 | **LayR** · Le bon design n'est jamais un hasard | Next.js · PostgreSQL · Gemini | ✅ | [🔗](https://layr.projectp.fr/) | [GitHub](https://github.com/PierreWZK/layr) |
-| 30 | Portfolio des 30 projets | Next.js | ⏳ | — | — |
+| 30 | **Portfolio** · Un portfolio en ASCII et un bureau 3D | Next.js · TypeScript · Three.js | ✅ | [🔗](https://portfolio.projectp.fr/) | [GitHub](https://github.com/PierreWZK/portfolio-2026) |
 
 Légende : ⏳ à venir · 🚧 en cours · ✅ terminé · « — » : pas encore en ligne ou pas encore de dépôt
 
