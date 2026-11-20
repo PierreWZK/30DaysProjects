@@ -70,6 +70,7 @@ a:hover { color: var(--red); }
   color: var(--bg);
 }
 .skip:focus { left: 8px; z-index: 10; }
+.skip:hover { color: var(--bg); } /* le rouge sur papier tombe à 2,7:1 */
 
 /* ---------- En-tête ---------- */
 
